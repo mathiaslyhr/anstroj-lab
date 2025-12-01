@@ -17,12 +17,17 @@
   font-display: swap;
 }
 
+/* Stop overscroll bounce (vigtigt til hero sektionen!) */
+html, body {
+  overscroll-behavior-y: none;
+}
+
 :root {
   color-scheme: light;
 }
 
 body {
-  background-color: #fafafa; /* neutral-50-ish */
+  background-color: #fdfbf7;
   color: #171717;            /* neutral-900-ish */
   font-family: "Satoshi", system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", sans-serif;
