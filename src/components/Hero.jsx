@@ -15,13 +15,12 @@ const rightImages = [
   "/img/Anstrog0630.jpg",
 ];
 
-const DISPLAY_TIME = 3000; // 3 sekunder
+const DISPLAY_TIME = 3000;
 
 export default function Hero() {
   const [leftIndex, setLeftIndex] = useState(0);
   const [rightIndex, setRightIndex] = useState(0);
 
-  // Venstre side – skifter hvert 3. sekund i fast rækkefølge
   useEffect(() => {
     const intervalId = setInterval(() => {
       setLeftIndex((prev) => (prev + 1) % leftImages.length);
@@ -30,7 +29,6 @@ export default function Hero() {
     return () => clearInterval(intervalId);
   }, []);
 
-  // Højre side – starter efter 1 sekund, derefter også hvert 3. sekund
   useEffect(() => {
     let intervalId;
 
@@ -38,7 +36,7 @@ export default function Hero() {
       intervalId = setInterval(() => {
         setRightIndex((prev) => (prev + 1) % rightImages.length);
       }, DISPLAY_TIME);
-    }, 1000); // kun forsinkelse i starten
+    }, 1000);
 
     return () => {
       clearTimeout(timeoutId);
@@ -52,9 +50,9 @@ export default function Hero() {
 
   return (
     <section className="relative h-screen w-full overflow-hidden">
-      {/* Billeder */}
+
       <div className="grid h-full grid-cols-1 md:grid-cols-2">
-        {/* Venstre kolonne */}
+
         <div className="relative h-full w-full overflow-hidden">
           {leftImages.map((src, idx) => (
             <img
@@ -70,7 +68,6 @@ export default function Hero() {
           ))}
         </div>
 
-        {/* Højre kolonne */}
         <div className="relative h-full w-full overflow-hidden">
           {rightImages.map((src, idx) => (
             <img
@@ -87,7 +84,6 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* CTA overlay */}
       <div className="absolute inset-0 flex items-end justify-center pb-16">
         <button
           type="button"
@@ -103,7 +99,6 @@ export default function Hero() {
             />
           </div>
 
-          {/* Hvid streg */}
           <div className="mt-2 h-[1px] w-full max-w-[110px] bg-white" />
         </button>
       </div>

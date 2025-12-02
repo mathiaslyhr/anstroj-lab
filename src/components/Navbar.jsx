@@ -14,7 +14,6 @@ export default function Navbar() {
   const toggleMenu = () => setIsOpen((v) => !v);
   const closeMenu = () => setIsOpen(false);
 
-  // Dynamisk farve (hvid når lukket, sort når åben)
   const iconColor = isOpen ? "#000" : "#fff";
   const textColor = isOpen ? "text-black" : "text-white";
 
@@ -25,12 +24,10 @@ export default function Navbar() {
 
   return (
     <>
-      {/* NAVBAR */}
       <header className="fixed inset-x-0 top-0 z-30">
         <nav className="mx-auto max-w-6xl px-4 py-5">
           <div className="flex items-center justify-between md:grid md:grid-cols-[1fr_auto_1fr]">
             
-            {/* Venstre - Burger menu */}
             <div className="flex items-center">
               <div className="md:hidden flex items-center justify-start min-w-[50px]">
                 <button
@@ -59,7 +56,6 @@ export default function Navbar() {
                 </button>
               </div>
 
-              {/* Desktop links */}
               <div className="hidden md:flex items-center gap-6 text-white">
                 <button className={linkClasses} onClick={goAbout}>
                   Om os
@@ -70,7 +66,6 @@ export default function Navbar() {
               </div>
             </div>
 
-            {/* Logo */}
             <div className="flex items-center justify-center">
               <span
                 className={`cursor-pointer text-3xl font-bold uppercase tracking-[0.1em] transition-colors duration-200 ${textColor}`}
@@ -80,7 +75,6 @@ export default function Navbar() {
               </span>
             </div>
 
-            {/* Højre - Ikoner */}
             <div className="flex items-center justify-end gap-4 min-w-[50px]">
               <button className="cursor-pointer hover:opacity-70 transition-opacity">
                 <Search size={18} strokeWidth={2} stroke={iconColor} />
@@ -96,7 +90,6 @@ export default function Navbar() {
       </header>
 
 
-      {/* FULLSCREEN MENU */}
       <div
         className={`
           md:hidden fixed inset-0 z-20 bg-[#F6F1EB]
