@@ -1,15 +1,17 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Search, ShoppingBag } from "lucide-react";
 
 const linkClasses =
   "cursor-pointer text-[12px] font-normal uppercase tracking-[0.16em] hover:opacity-70 transition-opacity";
 
 export default function Navbar() {
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
 
-  const goHome = () => (window.location.href = "/");
-  const goAbout = () => (window.location.href = "/om-os");
-  const goProducts = () => (window.location.href = "/produkter");
+    const goHome = () => navigate("/");
+    const goAbout = () => navigate("/om-os");
+    const goProducts = () => navigate("/produkter");
 
   const toggleMenu = () => setIsOpen((v) => !v);
   const closeMenu = () => setIsOpen(false);
