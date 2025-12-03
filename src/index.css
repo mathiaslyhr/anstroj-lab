@@ -36,4 +36,13 @@ body {
 
 p {
   font-weight: 400;
+  line-height: 1.6;
+}
+
+h1{
+  font-size: 3rem;
+}
+
+h2{
+  font-size: 2rem;
 }

@@ -1,5 +1,13 @@
+import { Route, Routes, Navigate } from "react-router-dom";
 import Home from "./pages/Home";
+import AboutPage from "./pages/AboutPage";
 
 export default function App() {
-  return <Home />;
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/om-os" element={<AboutPage />} />
+
+    </Routes>
+  )
 }
