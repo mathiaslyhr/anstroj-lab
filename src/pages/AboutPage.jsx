@@ -3,6 +3,7 @@ import { useLayoutEffect } from "react";
 import { useRef } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import ValuesAbout from "../components/ValuesAbout"
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -48,7 +49,7 @@ export default function AboutPage() {
       <section className="min-h-screen grid grid-cols-1 md:grid-cols-2">
         {/* LEFT - Image background */}
         <div className=" h-full bg-cover bg-center md:h-full bg-[url('/img/about-image2.jpg')]">
-          <div className="px-4 py-4 h-full">
+          <div className="px-8 py-8 h-full">
             <div ref={leftRef} className="relative min-h-screen">
               <div
                 ref={textRef}
@@ -63,7 +64,7 @@ export default function AboutPage() {
         </div>
 
         {/* RIGHT - brødtekst */}
-        <div className="flex items-start flex-col px-12 py-16 max-w-xl ">
+        <div className="flex items-start flex-col px-8 py-10 max-w-xl ">
           <h2 className="pb-6">Vores Historie</h2>
           <p>
             Anstrøg er skabt ud fra én mærkesag: at gøre parfumeverdenen ærlig,
@@ -75,70 +76,38 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <div>
-        <div>
+      <div className="px-8 pt-12 pb-20">
           <h3>Affordable Exclusitivity</h3>
-          <p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 pt-4 leading-relaxed items-start ">
+          
+          <div className="max-w-5xl">
+            <p>
             Anstrøg begyndte ikke som et business-projekt, men som et
-            fællesskab.To venner fra Aarhus, der undrede sig over, hvorfor
+            fællesskab. To venner fra Aarhus, der undrede sig over, hvorfor
             parfumer ofte koster mere for glas og logo end for selve duften.
-            Ideen opstod dér:Kunne man skabe dufte, der føltes ægte?Med
+            Ideen opstod dér: Kunne man skabe dufte, der føltes ægte? Med
             kvalitet, sjæl og karakter — uden prissætning baseret på branding?
-          </p>
-        </div>
-
-        <div>
-          <p>
-            Vi opdagede hurtigt, hvor store avancer og skjulte procenter der
-            præger branchen. Det var ikke den vej, vi ville gå. Vi ville gøre
-            det ordentligt. Bruge gode olier, være transparente og skabe noget,
-            man kan stå inde for — også uden et stort navn bag.
-          </p>
-          <p>
-            Derfor får vi vores olier fra Grasse i Frankrig og producerer alt
-            her i Danmark. Den nordiske tilgang — enkelthed, ærlighed og
-            kvalitet — præger hele processen. Vi kalder det affordable
-            exclusivity: Luksus, der føles ægte og tilgængelig.
-          </p>
+            </p>
+          </div>
+         
+          <div className="">
+            <p className="pb-4">
+              Vi opdagede hurtigt, hvor store avancer og skjulte procenter der
+              præger branchen. Det var ikke den vej, vi ville gå. Vi ville gøre
+              det ordentligt. Bruge gode olier, være transparente og skabe noget,
+              man kan stå inde for — også uden et stort navn bag.
+            </p>
+            <p>
+              Derfor får vi vores olier fra Grasse i Frankrig og producerer alt
+              her i Danmark. Den nordiske tilgang — enkelthed, ærlighed og
+              kvalitet — præger hele processen. Vi kalder det affordable
+              exclusivity: Luksus, der føles ægte og tilgængelig.
+            </p>
+          </div>
         </div>
       </div>
 
-      <section>
-        <div>
-          <h3>01</h3>
-          <p>
-            Ærlige dufte, ærlige priser. Vi bygger Anstrøg på gennemsigtighed —
-            uden skjulte procenter, oppustede avancer eller tom luksus. Det
-            handler om at skabe noget, man kan stå inde for, og hvor kvaliteten
-            taler højere end branding.
-          </p>
-          <h4>Gennemsigtighed</h4>
-          <p>Ærlige dufte. Ærlige priser.</p>
-        </div>
-
-        <div>
-          <h3>02</h3>
-          <p>
-            Vores olier kommer fra Grasse i Frankrig, og alt produceres her i
-            Danmark. Den nordiske tilgang — enkelthed, kvalitet og ro — præger
-            alt, vi skaber. Det er vores måde at gøre tingene ordentligt.
-          </p>
-          <h4>Kvalitet og Håndværk</h4>
-          <p>Gode olier. Dansk produktion.Intet kompromis.</p>
-        </div>
-
-        <div>
-          <h3>03</h3>
-          <p>
-            Anstrøg udspringer af venskab, kultur og de relationer, der binder
-            os sammen. Vores univers bygger på samtaler, øjeblikke og community
-            — ikke klassiske top-down kampagner. Vi tror på energi, der opstår
-            imellem mennesker.
-          </p>
-          <h4>Fællesskab og Forbindelser</h4>
-          <p>Skabt af mennesker, ikke markedsføring.</p>
-        </div>
-      </section>
+      <ValuesAbout/>
 
       <section>
         <div>
