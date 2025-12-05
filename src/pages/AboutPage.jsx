@@ -40,8 +40,8 @@ export default function AboutPage() {
     <div className="bg-[#F6F1EB]">
       <Navbar />
 
-      <div className="h-[calc(100vh-80px)] bg-[#D9D9D9] flex items-center justify-center leading-tight px-4 mt-20">
-        <h1 className="text-4xl md:text-5xl leading-tight text-center">
+      <div className="h-[calc(100vh-80px)] bg-[#D9D9D9] flex items-center justify-center leading-tight px-4 mt-20  bg-[url('/img/Anstrog0612.jpg')]">
+        <h1 className="text-4xl text-white md:text-5xl leading-tight text-center">
           mere end bare en parfume.
         </h1>
       </div>
@@ -53,7 +53,7 @@ export default function AboutPage() {
             <div ref={leftRef} className="relative min-h-screen">
               <div
                 ref={textRef}
-                className=" absolute left-0 right-0 flex justify-between text-sm text-white will-change-transform"
+                className=" absolute left-0 right-0 flex justify-between text-m text-white will-change-transform"
               >
                 <span>Forskel</span>
                 <span>Med</span>
@@ -90,7 +90,7 @@ export default function AboutPage() {
             </p>
           </div>
          
-          <div className="">
+          <div>
             <p className="pb-4">
               Vi opdagede hurtigt, hvor store avancer og skjulte procenter der
               præger branchen. Det var ikke den vej, vi ville gå. Vi ville gøre
@@ -109,19 +109,25 @@ export default function AboutPage() {
 
       <ValuesAbout/>
 
-      <section>
-        <div>
-            <h3>Ét Anstrøg af gangen</h3>
-            <p>
+      <section className="grid grid-cols-[1fr_2fr]">
+           <div>
+            <img src="/img/about-2.jpg" alt="Anstrøg parfume" />
+           </div>
+
+           <div className="pt-12 px-8">
+             <h3>Ét Anstrøg af gangen</h3>
+             <div className="grid grid-cols-2 gap-12 pt-4">
+                <p>
                 Vi skaber parfumer i dag — men vores vision rækker længere. Vi
                 drømmer om et univers af objekter, der løfter hverdagen med ro,
                 æstetik og ærlighed.
-            </p>
-            <p>
-                Anstrøg skal vokse med menneskerne, relationerne og øjeblikkene, der
-                former det. Det er kun begyndelsen.
-            </p>
-        </div>
+                </p>
+                  <p>
+                  Anstrøg skal vokse med menneskerne, relationerne og øjeblikkene, der
+                  former det. Det er kun begyndelsen.
+                  </p>
+             </div>
+           </div>
       </section>
     </div>
   );
