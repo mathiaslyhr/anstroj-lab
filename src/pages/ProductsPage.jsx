@@ -8,6 +8,9 @@ import { collection,getDocs } from "firebase/firestore";
 export default function ProductsPage() {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true)
+    const [selectedFilter, setSelectedFilter] = useState("All")
+
+    const filters = ["All", "Amber", "Woody", "Floral", "Fresh", "Spicy"]
 
     useEffect(() => {
         async function loadProducts() {
@@ -24,6 +27,8 @@ export default function ProductsPage() {
 
      if (loading) return <div>Loading...</div>;
 
+     const filteredProducts = selectedFilter === "All" ? products : products.filter(p => p.categories.includes(selectedFilter));
+
     return (
         <div>
             <Navbar/>
@@ -39,20 +44,16 @@ export default function ProductsPage() {
             </div>
 
             <div className="filterbar border-t p-4 flex items-center space-x-8 font-normal border-b border-[#39516A]">
-                <button>Amber</button>
-                
-                <button>Woody</button>
-                
-                <button>Fresh</button>
-                
-                <button>Spicy</button>
-                
-                <button>Floral</button>
+              {filters.map(f => (
+                <button key={f} onClick={() => setSelectedFilter(f)} className={`cursor-pointer ${selectedFilter === f ? "border-b-2 font-semibold" : "text-gray-600"}`}>
+                    {f}
+                </button>
+              ))}
             </div>
 
             <div>
-                {products.map(product => (
-                    <ProductCard key={product.id} product={product} />
+                {filteredProducts.map((product, index) => (
+                    <ProductCard key={product.id} product={product} index={index} />
                 ))}
             </div>
 
