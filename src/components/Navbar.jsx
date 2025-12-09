@@ -12,6 +12,7 @@ export default function Navbar() {
     const goHome = () => navigate("/");
     const goAbout = () => navigate("/om-os");
     const goProducts = () => navigate("/produkter");
+    const goLab = () => navigate("/lab");
 
   const toggleMenu = () => setIsOpen((v) => !v);
   const closeMenu = () => setIsOpen(false);
@@ -64,6 +65,9 @@ export default function Navbar() {
                 </button>
                 <button className={linkClasses} onClick={goProducts}>
                   Produkter
+                </button>
+                <button className={linkClasses} onClick={goLab}>
+                  Scent Lab
                 </button>
               </div>
             </div>

@@ -1,0 +1,32 @@
+[
+  {
+    "id": "floral",
+    "label": "Florale",
+    "description": "Florale noter er ofte lyse, feminine og luftige. De skaber en elegant, naturlig duftprofil."
+  },
+  {
+    "id": "amber",
+    "label": "Amber",
+    "description": "Ambre-noter er varme, dybe og omsluttende. Perfekte til aftener og tilstedeværelse."
+  },
+  {
+    "id": "fruity",
+    "label": "Fruity",
+    "description": "Søde og saftige frugtnoter giver et legende, energisk udtryk."
+  },
+  {
+    "id": "musk",
+    "label": "Musk",
+    "description": "Musk skaber en blød, hudnær og ren følelse – en underspillet sensualitet."
+  },
+  {
+    "id": "spicy",
+    "label": "Krydret",
+    "description": "Krydrede noter tilføjer varme, kant og kompleksitet til en duft."
+  },
+  {
+    "id": "citrus",
+    "label": "Citrus",
+    "description": "Citrus-noter giver en frisk, opkvikkende og ren start."
+  }
+]
