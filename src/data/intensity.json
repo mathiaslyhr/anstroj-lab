@@ -1,0 +1,7 @@
+[
+  { "id": "subtle", "label": "Diskret" },
+  { "id": "soft", "label": "Let til stede" },
+  { "id": "balanced", "label": "Balanceret" },
+  { "id": "clear", "label": "Tydelig" },
+  { "id": "strong", "label": "Markant" }
+]

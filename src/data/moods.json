@@ -1,0 +1,8 @@
+[
+    { "id": "soft_clean", "label": "Soft Clean" },
+    { "id": "warm_cozy", "label": "Warm & Cozy" },
+    { "id": "bright_uplifting", "label": "Bright & Uplifting" },
+    { "id": "deep_alluring", "label": "Deep & Alluring" },
+    { "id": "fresh_minimal", "label": "Fresh Minimal" },
+    { "id": "bold_expressive", "label": "Bold & Expressive" }
+  ]

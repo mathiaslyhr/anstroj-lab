@@ -139,3 +139,13 @@ h3{
 .swiper-slide {
   height: auto !important;
 }
+
+/* Animation til Scent lab flow */
+@keyframes fade {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade {
+  animation: fade 0.35s ease forwards;
+}
