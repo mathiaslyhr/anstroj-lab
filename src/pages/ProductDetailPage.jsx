@@ -4,6 +4,7 @@ import { db } from "../firebase";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { Heart } from "lucide-react";
 import Navbar from "../components/Navbar";
+import ImageSlider from "../components/ImageSlider";
 
 export default function ProductDetailPage() {
     const { slug } = useParams();
@@ -47,26 +48,22 @@ export default function ProductDetailPage() {
 
         <div>
             <Navbar/>
-            <section className="pt-20 grid grid-cols-2 h-screen">
-                <div>
-                    {/* {product.detailImages?.map((img, index) => (
-                          <img key={index} src={img} alt={`${product.name}`} />
-                    ))} */}
-                </div>
+            <section className="pt-20 grid grid-cols-2 h-[90vh] overflow-hidden">
+               <ImageSlider images={product.detailImages} name={product.name}/>
 
-                <div className="flex flex-col justify-center items-center ">
+                <div className="flex flex-col justify-center items-center">
                     <div className="w-[70%]">
                         <div className="flex justify-between">
                             <h3>{product.name}</h3>
-                            <button className="favorite border p-2"><Heart strokeWidth={1}/></button>
+                            <button className="favorite border p-2 cursor-pointer"><Heart strokeWidth={1}/></button>
                         </div>
                         <p className="pb-4">{product.description}</p>
                         <p>{product.moodDescription}</p>
                         <div className="size pt-18 flex justify-between items-center">
                             <p>Størrelse</p>
                             <div className="gap-4 flex">
-                            <button className="p-2 bg-[#39516A] border border-transparent text-white font-normal">30mL</button>
-                            <button className="p-2 font-normal border">50mL</button>
+                            <button className="cart-btn p-2 bg-[#39516A] border border-transparent text-white font-normal cursor-pointer">30mL</button>
+                            <button className="size-btn p-2 font-normal border cursor-pointer">50mL</button>
                             </div>
                         </div>
                         <div className="pt-4 flex gap-4 justify-between">
