@@ -7,7 +7,6 @@ import { collection,getDocs } from "firebase/firestore";
 
 export default function ProductsPage() {
     const [products, setProducts] = useState([]);
-    const [loading, setLoading] = useState(true)
     const [selectedFilter, setSelectedFilter] = useState("All")
 
     const filters = ["All", "Amber", "Woody", "Floral", "Fresh", "Spicy"]
@@ -20,12 +19,11 @@ export default function ProductsPage() {
                 ...doc.data()
             }));
             setProducts(list);
-            setLoading(false);
         }
         loadProducts();
     }, []);
 
-     if (loading) return <div>Loading...</div>;
+    
 
      const filteredProducts = selectedFilter === "All" ? products : products.filter(p => p.categories.includes(selectedFilter));
 

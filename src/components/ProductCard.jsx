@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useRef } from "react";
+import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
@@ -57,16 +58,18 @@ export default function ProductCard({ product, index }) {
                 <p className="z-10 absolute top-1/2 left-1/2 text-white mix-blend-difference text-3xl -translate-x-1/2 -translate-y-1/2">{product.name}</p>
             </div>
 
-            <div className="product-card p-4 border-r border-b cursor-pointer border-[#39516A]">
-                <p className="font-normal uppercase pt-4 text-s">{product.mood}</p>
-                <div className="flex items-center flex-col h-full justify-center">
-                    <img className="w-[60%] pb-4" src={product.image} alt={product.name} />
-                    <h3>{product.name}</h3>
-                    <p>{product.description}</p>
-                    <span className="font-normal pb-6">{`${product.price} kr`}</span>
-                    <button className="cart-btn bg-[#39516A] p-2 w-[60%] text-white font-normal cursor-pointer">Tilføj til kurv</button>
+            <Link className="p-4 border-r border-b border-[#39516A] " to={`/produkter/${product.slug}`}>
+                <div className="product-card cursor-pointer">
+                    <p className="font-normal uppercase text-s">{product.mood}</p>
+                    <div className="flex items-center pt-10 flex-col h-full justify-center">
+                        <img className="w-[60%] pb-4" src={product.image} alt={product.name} />
+                        <h3>{product.name}</h3>
+                        <p>{product.description}</p>
+                        <span className="font-normal pb-4">{`${product.price} kr`}</span>
+                        <button className="cart-btn bg-[#39516A] p-2 w-[60%] text-white font-normal cursor-pointer">Tilføj til kurv</button>
+                    </div>
                 </div>
-            </div>
+            </Link>
 
             <div className="duft-info p-4 grid grid-cols-1 grid-rows-2 border-b border-[#39516A]">
                 <div className="flex text-xs gap-10">
