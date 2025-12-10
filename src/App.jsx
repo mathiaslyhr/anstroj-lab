@@ -7,6 +7,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import ScentLabFlow from "./components/ScentLabFlow";
+import SavedProfilePage from "./pages/SavedProfilePage";
 
 export default function App() {
   return (
@@ -16,7 +17,7 @@ export default function App() {
       <Route path="/produkter" element={<ProductsPage />} />
       <Route path="/produkter/:slug" element={<ProductDetailPage />} />
       <Route path="/lab" element={<ScentLabFlow />} />
-      
+      <Route path="/profil/:id" element={<SavedProfilePage />} />
 
 
     </Routes>

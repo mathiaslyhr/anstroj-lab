@@ -1,0 +1,27 @@
+[
+  {
+    "id": "everyday",
+    "title": "En hverdagsduft",
+    "text": "Noget roligt, rent og let at bære i alle situationer."
+  },
+  {
+    "id": "warm_safe",
+    "title": "Noget varmt og trygt",
+    "text": "En duft med nærhed og blød varme."
+  },
+  {
+    "id": "standout",
+    "title": "En duft der skiller sig ud",
+    "text": "Et tydeligere udtryk med dybde og karakter."
+  },
+  {
+    "id": "fresh_uplifting",
+    "title": "Noget frisk og opløftende",
+    "text": "Lys, energi og en ren lethed."
+  },
+  {
+    "id": "surprise_me",
+    "title": "Overrask mig",
+    "text": "Jeg er åben. Vis mig noget, jeg måske ikke selv ville have valgt."
+  }
+]
