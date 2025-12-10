@@ -8,7 +8,7 @@ export default function MoodStep({ onNext, onBack } ) {
   
 
   return (
-     <div className="h-full flex flex-col justify-between">
+     <div className="h-full px-6 flex flex-col justify-between">
       
       {/* Text section */}
       <div className="w-full">
@@ -55,7 +55,7 @@ export default function MoodStep({ onNext, onBack } ) {
           onClick={() => onNext(selectedMood)}
           disabled={!selectedMood}
           className={`
-            px-6 py-2 rounded-full transition-all
+            px-6 py-2 transition-all
             ${
               selectedMood
                 ? "bg-[#39516A] text-white hover:bg-[#2f4355]"

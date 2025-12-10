@@ -1,0 +1,22 @@
+[
+  {
+    "id": "high_sensitive",
+    "title": "Jeg er meget sensitiv",
+    "text": "Jeg bliver hurtigt overvældet af stærke eller krydrede dufte."
+  },
+  {
+    "id": "specific_reactions",
+    "title": "Jeg reagerer på bestemte noter",
+    "text": "Enkelte duftretninger kan give mig hovedpine eller ubehag."
+  },
+  {
+    "id": "mild_preferences",
+    "title": "Jeg foretrækker milde dufte",
+    "text": "Jeg kan godt lide duft, men helst noget let, rent og ikke for tungt."
+  },
+  {
+    "id": "not_sensitive",
+    "title": "Jeg er ikke særlig sensitiv",
+    "text": "De fleste dufte fungerer for mig, også dem med lidt mere karakter."
+  }
+]

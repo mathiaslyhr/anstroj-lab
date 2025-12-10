@@ -26,7 +26,7 @@ const activeNote = selectedNotes.length > 0
       <div className="flex gap-12 w-full">
 
         {/* LEFT: BIG INFO BOX */}
-        <div className="w-[50%] h-(80%) bg-[#DCDCDC] rounded-xl flex items-center justify-center px-6 text-center">
+        <div className="w-[50%] h-(60%) bg-[#DCDCDC] rounded-xl flex items-center justify-center px-6 text-center">
           {activeNote ? (
             <p className="text-stone-800 leading-relaxed text-lg">{activeNote.description}</p>
           ) : (
@@ -40,7 +40,7 @@ const activeNote = selectedNotes.length > 0
           <h1 className="text-3xl font-medium mb-4">Vælg de noter, du foretrækker.</h1>
 
           <h3 className="font-normal mb-10 leading-relaxed">
-            De 2 noter du vælger guider os tættere på den rigtige duftprofil.
+            Den note du vælger guider os tættere på den rigtige duftprofil til dig.
           </h3>
 
           <div className="grid grid-cols-3 gap-6">
@@ -53,7 +53,7 @@ const activeNote = selectedNotes.length > 0
                   key={note.id}
                   onClick={() => toggleNote(note.id)}
                   className={`
-                    h-50 cursor-pointer border p-4 flex items-center justify-center
+                    h-35 cursor-pointer border p-4 flex items-center justify-center
                     text-sm font-medium transition-all
                     ${
                       isSelected
@@ -73,7 +73,7 @@ const activeNote = selectedNotes.length > 0
       </div>
 
       {/* NAVIGATION */}
-      <div className="flex justify-between mt-16 mb-10 w-full">
+      <div className="flex justify-between mt-8 mb-10 w-full">
         <button
           onClick={onBack}
           className="text-sm text-stone-500 hover:text-stone-800"
@@ -82,10 +82,10 @@ const activeNote = selectedNotes.length > 0
         </button>
 
         <button
-          onClick={() => onNext(selectedNotes)}
+          onClick={() => onNext(selectedNotes.id)}
           disabled={!selectedNotes}
           className={`
-            px-6 py-2 rounded-full transition-all
+            px-6 py-2 transition-all
             ${
               selectedNotes
                 ? "bg-[#39516A] text-white hover:bg-[#2f4355]"

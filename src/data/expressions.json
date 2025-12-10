@@ -1,0 +1,26 @@
+[
+  {
+    "id": "natural",
+    "label": "Ren og naturlig",
+    "image": "/images/expressions/natural-small.jpg",
+    "largeImage": "/images/expressions/natural-large.jpg"
+  },
+  {
+    "id": "warm",
+    "label": "Varm og imødekommende",
+    "image": "/images/expressions/warm-small.jpg",
+    "largeImage": "/images/expressions/warm-large.jpg"
+  },
+  {
+    "id": "confident",
+    "label": "Selvsikker og tydelig",
+    "image": "/images/expressions/confident-small.jpg",
+    "largeImage": "/images/expressions/confident-large.jpg"
+  },
+  {
+    "id": "elegant",
+    "label": "Elegant og afbalanceret",
+    "image": "/images/expressions/elegant-small.jpg",
+    "largeImage": "/images/expressions/elegant-large.jpg"
+  }
+]

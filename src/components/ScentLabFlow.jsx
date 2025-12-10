@@ -5,6 +5,10 @@ import MoodStep from "./MoodStep";
 import SituationsStep from "./SituationsStep";
 import NotesStep from "./NotesStep";
 import IntensityStep from "./IntensityStep";
+import SensitivityStep from "./SensitivityStep";
+import ExpressionStep from "./ExpressionStep";
+import IntentStep from "./IntentStep";
+import ScentLabSummary from "./ScentLabSummary";
 
 
 export default function ScentLabFlow(){
@@ -14,9 +18,9 @@ export default function ScentLabFlow(){
     situations: [],
     notes:null,
     intensity: null,
-    longevity: null,
-    budget: null,
-    openness: null,
+    sensitivity: null,
+    expression: null,
+    intent: null,
     });
 
    const next = () => setStep(prev => prev + 1);
@@ -25,6 +29,20 @@ export default function ScentLabFlow(){
    function updateAnswers(changes) {
   setAnswers(prev => ({ ...prev, ...changes }));
 }
+
+    function resetFlow() {
+    setAnswers({
+        mood: null,
+        situations: [],
+        notes: null,
+        intensity: null,
+        sensitivity: null,
+        expression: null,
+        intent: null,
+    });
+
+    setStep(1); // eller 0, alt efter hvornår du vil starte
+    }
     
     return(
         <div className="pt-20" style={{ height: "calc(100vh - 80px)" }}>
@@ -51,8 +69,8 @@ export default function ScentLabFlow(){
 
                     {step === 3 && <NotesStep 
                     onBack={back}
-                    onNext={(noteArray) => {
-                    updateAnswers({ preferredNote: noteArray });
+                    onNext={(noteValue) => {
+                    updateAnswers({ notes: noteValue });
                     next();
                     }}/>}
 
@@ -62,7 +80,35 @@ export default function ScentLabFlow(){
                     updateAnswers({ intensity: intensityValue });
                     next();
                     }}
-                />}
+                    />}
+
+                    {step === 5 && <SensitivityStep
+                    onBack={back}
+                    onNext={(value) => {
+                    updateAnswers({ sensitivity: value });
+                    next();
+                    }}
+                    />}
+
+                    {step === 6 && <ExpressionStep
+                    onBack={back}
+                    onNext={(value) => {
+                    updateAnswers({ expression: value });
+                    next();
+                    }}
+                    />}
+
+                    {step === 7 && <IntentStep
+                    onBack={back}
+                    onNext={(value) => {
+                    updateAnswers({ intent: value });
+                    next();
+                    }}
+                    />}
+
+                    {step === 8 && <ScentLabSummary answers={answers} onReset={resetFlow}/>}
+
+                    
                     
                 </div>
             </div>

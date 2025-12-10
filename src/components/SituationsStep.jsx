@@ -104,7 +104,7 @@ export default function SituationsStep({  onNext, onBack }) {
           onClick={() => onNext(selected)}
           disabled={selected.length === 0}
           className={`
-            px-6 py-2 rounded-full transition-all cursor-pointer
+            px-6 py-2 transition-all cursor-pointer
             ${
               selected.length > 0
                 ? "bg-[#39516A] text-white hover:bg-[#2f4355]"

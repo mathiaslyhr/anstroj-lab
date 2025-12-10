@@ -106,7 +106,7 @@ export default function IntensityStep({ onNext, onBack }) {
 
         <button
           onClick={() => onNext(current.id)}
-          className="px-6 py-2 rounded-full bg-[#39516A] text-white hover:bg-[#2f4355] transition-all"
+          className="px-6 py-2 bg-[#39516A] text-white hover:bg-[#2f4355] transition-all"
         >
           Næste
         </button>
