@@ -1,8 +1,32 @@
 [
-    { "id": "soft_clean", "label": "Soft Clean" },
-    { "id": "warm_cozy", "label": "Warm & Cozy" },
-    { "id": "bright_uplifting", "label": "Bright & Uplifting" },
-    { "id": "deep_alluring", "label": "Deep & Alluring" },
-    { "id": "fresh_minimal", "label": "Fresh Minimal" },
-    { "id": "bold_expressive", "label": "Bold & Expressive" }
-  ]
+  { 
+    "id": "soft_clean", 
+    "label": "Soft Clean",
+    "image": "/images/moods/soft_clean.jpg"
+  },
+  { 
+    "id": "warm_cozy", 
+    "label": "Warm & Cozy",
+    "image": "/images/moods/warm_cozy.jpg"
+  },
+  { 
+    "id": "bright_uplifting", 
+    "label": "Bright & Uplifting",
+    "image": "/images/moods/bright_uplifting.jpg"
+  },
+  { 
+    "id": "deep_alluring", 
+    "label": "Deep & Alluring",
+    "image": "/images/moods/deep_alluring.jpg"
+  },
+  { 
+    "id": "fresh_minimal", 
+    "label": "Fresh Minimal",
+    "image": "/images/moods/fresh_minimal.jpg"
+  },
+  { 
+    "id": "bold_expressive", 
+    "label": "Bold & Expressive",
+    "image": "/images/moods/bold_expressive.jpg"
+  }
+]

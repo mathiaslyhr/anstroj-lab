@@ -3,24 +3,28 @@
       "id": "work_study",
       "title": "Arbejde eller studie",
       "text": "Til de dage, hvor du ønsker en duft, der følger dig stille gennem rutiner og fokus.",
-      "notes": ["Clean musk", "Citrus zest", "Soft woods", "Green notes", "White tea"]
+      "notes": ["Clean musk", "Citrus zest", "Soft woods", "Green notes", "White tea"],
+      "image": "/images/situations/evening.jpg"
     },
     {
       "id": "home_relax",
       "title": "Hjemme og afslapning",
       "text": "Til rolige stunder alene, hvor du ønsker noget blødt og tæt på huden.",
-      "notes": ["Skin musk", "Creamy woods", "Lavender", "Vanilla hushed", "Soft floral"]
+      "notes": ["Skin musk", "Creamy woods", "Lavender", "Vanilla hushed", "Soft floral"],
+      "image": "/images/situations/evening.jpg"
     },
     {
       "id": "evening_out",
       "title": "Aftener ude",
       "text": "Til middage, barer og sociale aftaler, hvor du gerne vil sætte lidt mere stemning.",
-      "notes": ["Amber", "Dark florals", "Sandalwood", "Spices", "Smoky nuances"]
+      "notes": ["Amber", "Dark florals", "Sandalwood", "Spices", "Smoky nuances"],
+      "image": "/images/situations/evening.jpg"
     },
     {
       "id": "creative",
       "title": "Kreative stunder",
       "text": "Til de øjeblikke hvor du fordyber dig, tænker, skaber eller skriver.",
-      "notes": ["Green florals", "Vetiver light", "Bergamot", "Fig", "Soft herbals"]
+      "notes": ["Green florals", "Vetiver light", "Bergamot", "Fig", "Soft herbals"],
+      "image": "/images/situations/evening.jpg"
     }
   ]

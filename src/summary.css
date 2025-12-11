@@ -2,9 +2,13 @@
 .summary-scroll-container {
   width: 100vw;
   height: 100vh;
-  overflow: scroll;
+  overflow: hidden;
   cursor: grab;
   scroll-behavior: auto;
+}
+
+.summary-scroll-container::-webkit-scrollbar {
+  display: none;
 }
 
 .summary-scroll-container:active {
@@ -14,8 +18,8 @@
 /* DET STORE CANVAS */
 .summary-canvas {
   position: relative;
-  width: 4000px;
-  height: 2500px;
+  width: 200vw;
+  height: 200vh;
   background: #f9f7f5;
   transition: transform 0.8s ease; 
   transform-origin: center center;
@@ -28,30 +32,4 @@
   padding: 20px;
   border-radius: 16px;
   box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-}
-
-/* positioning */
-.profile-name {
-  top: 200px;
-  left: 300px;
-}
-
-.mood-block {
-  top: 600px;
-  left: 500px;
-}
-
-.note-block {
-  top: 400px;
-  left: 1000px;
-}
-
-.expression-block {
-  top: 1200px;
-  left: 800px;
-}
-
-.intent-block {
-  top: 1500px;
-  left: 1400px;
 }
