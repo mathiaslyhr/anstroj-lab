@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Search, ShoppingBag } from "lucide-react";
+import { Search, ShoppingBag, Heart } from "lucide-react";
 
 const linkClasses =
   "cursor-pointer text-[12px] font-normal uppercase tracking-[0.16em] hover:opacity-70 transition-opacity";
