@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
-import { Search, Heart, ShoppingBag } from "lucide-react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Search, ShoppingBag } from "lucide-react";
 
 const linkClasses =
   "cursor-pointer text-[12px] font-normal uppercase tracking-[0.16em] hover:opacity-70 transition-opacity";
@@ -11,11 +12,13 @@ export default function Navbar() {
 
   // transparent only on very top of homepage
   const [isSolid, setIsSolid] = useState(!isHome);
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
 
-  const goHome = () => (window.location.href = "/");
-  const goAbout = () => (window.location.href = "/om-os");
-  const goProducts = () => (window.location.href = "/produkter");
+    const goHome = () => navigate("/");
+    const goAbout = () => navigate("/om-os");
+    const goProducts = () => navigate("/produkter");
+    const goLab = () => navigate("/lab");
 
   const toggleMenu = () => setIsOpen((v) => !v);
   const closeMenu = () => setIsOpen(false);
@@ -114,6 +117,9 @@ export default function Navbar() {
                 </button>
                 <button className={linkClasses} onClick={goProducts}>
                   Produkter
+                </button>
+                <button className={linkClasses} onClick={goLab}>
+                  Scent Lab
                 </button>
               </div>
             </div>
