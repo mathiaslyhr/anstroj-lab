@@ -5,9 +5,10 @@ export default function NotesStep({ onNext, onBack }) {
   const [selectedNotes, setSelectedNotes] = useState([]);
 
   // Find data om valgte note
-const activeNote = selectedNotes.length > 0 
-  ? notes.find(n => n.id === selectedNotes[selectedNotes.length - 1])
-  : null;
+  const activeNote =
+  selectedNotes.length > 0
+    ? notes.find(n => n.id === selectedNotes[selectedNotes.length - 1]) || null
+    : null;
   
   
   function toggleNote(id) {
@@ -40,7 +41,7 @@ const activeNote = selectedNotes.length > 0
           <h1 className="text-3xl font-medium mb-4">Vælg de noter, du foretrækker.</h1>
 
           <h3 className="font-normal mb-10 leading-relaxed">
-            Den note du vælger guider os tættere på den rigtige duftprofil til dig.
+            Den 2 noter du vælger guider os tættere på den rigtige duftprofil til dig.
           </h3>
 
           <div className="grid grid-cols-3 gap-6">
@@ -82,8 +83,8 @@ const activeNote = selectedNotes.length > 0
         </button>
 
         <button
-          onClick={() => onNext(selectedNotes.id)}
-          disabled={!selectedNotes}
+          onClick={() => onNext(selectedNotes)}
+          disabled={selectedNotes.length === 0}
           className={`
             px-6 py-2 transition-all
             ${

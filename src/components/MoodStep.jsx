@@ -2,8 +2,19 @@ import { useState } from "react";
 import moods from "../data/moods.json"
 
 export default function MoodStep({ onNext, onBack } ) {
-   const [selectedMood, setSelectedMood] = useState(null); 
+   const [selectedMood, setSelectedMood] = useState([]); 
   
+   function toggleMood(id) {
+    // Hvis mood allerede er valgt → fjern det
+    if (selectedMood.includes(id)) {
+      setSelectedMood(selectedMood.filter(m => m !== id));
+      return;
+    }
+    // Ellers, kun tilføj hvis der er under 2 udvalgte
+    if (selectedMood.length < 2) {
+      setSelectedMood([...selectedMood, id]);
+    }
+  }
   
   
 
@@ -22,23 +33,38 @@ export default function MoodStep({ onNext, onBack } ) {
         {/* Options */}
         <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mt-10 w-[80%] justify-self-center">
           {moods.map((mood) => {
-            const selected = selectedMood === mood.id;
+            const isActive = selectedMood.includes(mood.id);
+            const isBlocked = !isActive && selectedMood.length === 2;
 
             return (
               <button
                 key={mood.id}
-                onClick={() => setSelectedMood(mood.id)}
+                onClick={() => toggleMood(mood.id)}
+                disabled={isBlocked}
                 className={`
-                  h-32 flex items-center justify-center border 
-                  transition-all text-sm font-medium
-                  ${
-                    selected
-                      ? "bg-[#39516A] text-white border-[#39516A]"
-                      : "bg-[#E6E6E6] border-[#D4D4D4] hover:border-[#999]"
+                  relative h-40 rounded-xl overflow-hidden transition-all text-left
+                  border
+                  ${isActive
+                    ? "bg-[#39516A] text-white border-[#39516A]"
+                    : "bg-[#E8E8E8] text-stone-800 border-[#D4D4D4] hover:border-[#999]"
                   }
+                  ${isBlocked ? "opacity-40 cursor-not-allowed" : "cursor-pointer"}
                 `}
               >
-                <h3 className="font-medium mb-1">{mood.label}</h3>
+                {/* Mood image */}
+                <div
+                  className={`absolute inset-0 bg-cover bg-center transition-transform group
+                    ${isActive ? "opacity-40" : "group-hover:scale-105"}
+                  `}
+                  style={{ backgroundImage: `url(${mood.image})` }}
+                />
+
+                {/* Text overlay */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <p className={`font-medium text-lg ${isActive ? "text-white" : "text-black"}`}>
+                    {mood.label}
+                  </p>
+                </div>
               </button>
             );
           })}
@@ -53,7 +79,7 @@ export default function MoodStep({ onNext, onBack } ) {
 
         <button
           onClick={() => onNext(selectedMood)}
-          disabled={!selectedMood}
+          disabled={selectedMood.length === 0}
           className={`
             px-6 py-2 transition-all
             ${

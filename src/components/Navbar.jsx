@@ -27,7 +27,7 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="fixed inset-x-0 top-0 z-30">
+      <header className="navbar fixed inset-x-0 top-0 z-30">
         <nav className="mx-auto max-w-6xl px-4 py-5">
           <div className="flex items-center justify-between md:grid md:grid-cols-[1fr_auto_1fr]">
             

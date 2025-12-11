@@ -14,9 +14,9 @@ import ScentLabSummary from "./ScentLabSummary";
 export default function ScentLabFlow(){
     const [step, setStep] = useState(0);
     const [answers, setAnswers] = useState({
-    mood: null,
+    moods: [],
     situations: [],
-    notes:null,
+    notes:[],
     intensity: null,
     sensitivity: null,
     expression: null,
@@ -32,16 +32,16 @@ export default function ScentLabFlow(){
 
     function resetFlow() {
     setAnswers({
-        mood: null,
+        moods: [],
         situations: [],
-        notes: null,
+        notes: [],
         intensity: null,
         sensitivity: null,
         expression: null,
         intent: null,
     });
 
-    setStep(1); // eller 0, alt efter hvornår du vil starte
+    setStep(1); 
     }
     
     return(
@@ -55,8 +55,8 @@ export default function ScentLabFlow(){
                     {step === 0 && <IntroStep onNext={next} />}
 
                     {step === 1 && <MoodStep
-                    onNext={(value) => {
-                        updateAnswers({ mood: value });
+                    onNext={(selectedMoods) => {
+                        updateAnswers({ moods: selectedMoods });
                         next();
                     }}
                     onBack={back}
@@ -69,8 +69,8 @@ export default function ScentLabFlow(){
 
                     {step === 3 && <NotesStep 
                     onBack={back}
-                    onNext={(noteValue) => {
-                    updateAnswers({ notes: noteValue });
+                    onNext={(noteArray) => {
+                    updateAnswers({ notes: noteArray });
                     next();
                     }}/>}
 
