@@ -28,7 +28,7 @@ export default function FeaturedProductsSlider() {
       name: "Pleasant",
       subtitleLine1: "Noter af bergamot, jasmin, oud,",
       subtitleLine2: "egetræsmos og amber.",
-      image: "/img/pleasent.jpg",
+      image: "/img/pleasant.jpg",
     },
   ];
 

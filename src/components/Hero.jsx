@@ -2,16 +2,16 @@ import { useEffect, useState } from "react";
 import { ArrowRight } from "lucide-react";
 
 const leftImages = [
-  "/img/Anstrog0600.jpg",
+  "/img/about-image2.jpg",
   "/img/Anstrog0646.jpg",
   "/img/Anstrog0610.jpg",
-  "/img/Anstrog0655.jpg",
+  "/img/about-2.jpg",
 ];
 
 const rightImages = [
   "/img/Anstrog0612.jpg",
   "/img/Anstrog0622.jpg",
-  "/img/Anstrog0626.jpg",
+  "/img/calm-detail.jpg",
   "/img/Anstrog0630.jpg",
 ];
 
