@@ -1,72 +1,74 @@
+// src/components/Footer.jsx
 export default function Footer() {
+  const year = new Date().getFullYear();
+
   return (
-    <footer className="bg-black text-white pt-16 pb-8">
-      <div className="mx-auto w-full max-w-6xl px-6 md:px-8">
-        <div className="flex flex-col gap-12 md:flex-row md:justify-between">
-          {/* Brand / intro */}
-          <div className="max-w-sm">
-            <div className="text-xl font-semibold tracking-[0.18em] uppercase mb-3">
-              ANSTRØJ
-            </div>
-            <p className="text-sm text-neutral-300">
-              Ærlige dufte, dansk håndværk og gennemsigtighed i hver eneste
-              flakon.
+    <footer className="border-t border-neutral-200 bg-white text-neutral-700">
+      <div className="mx-auto max-w-6xl px-6 md:px-8 py-14 text-sm">
+        {/* ØVERSTE SEKTION – 3 kolonner */}
+        <div className="grid gap-10 md:grid-cols-3 items-start text-left md:pl-12">
+          {/* Venstre kolonne: brand + citat */}
+          <div className="place-self-start">
+            <p className="text-sm font-semibold tracking-[0.25em] uppercase text-neutral-900">
+              Anstrøj Lab
+            </p>
+            <p className="mt-3 text-sm leading-relaxed text-neutral-600">
+              Et moderne nordisk duftunivers, hvor råt håndværk
+              <br />
+              underspillet luksus og ærlig kvalitet mødes.
             </p>
           </div>
 
-          {/* Kontakt */}
-          <div id="kontakt" className="text-sm">
-            <h3 className="text-[13px] uppercase tracking-[0.18em] mb-3">
-              Kontakt
-            </h3>
-            <div className="space-y-1 text-neutral-300">
-              <p>Mail: <span className="underline decoration-neutral-500">kontakt@anstroej.dk</span></p>
-              <p>Instagram: @anstroj</p>
-              <p>København, Danmark</p>
-            </div>
-          </div>
-
-          {/* FAQ */}
-          <div id="faq" className="text-sm">
-            <h3 className="text-[13px] uppercase tracking-[0.18em] mb-3">
-              FAQ
-            </h3>
-            <ul className="space-y-1 text-neutral-300">
+          {/* Midterste kolonne: politik-links */}
+          <div className="place-self-start text-xs text-neutral-600">
+            <ul className="space-y-2">
               <li>
-                <a href="/faq" className="hover:text-white">
-                  Levering & retur
+                <a href="/persondata" className="hover:text-neutral-900">
+                  Politik om beskyttelse af persondata
                 </a>
               </li>
               <li>
-                <a href="/faq" className="hover:text-white">
-                  Holdbarhed på duftene
+                <a href="/refusion" className="hover:text-neutral-900">
+                  Refusionspolitik
                 </a>
               </li>
               <li>
-                <a href="/faq" className="hover:text-white">
-                  Veganske & cruelty free?
+                <a href="/servicevilkar" className="hover:text-neutral-900">
+                  Servicevilkår
                 </a>
               </li>
               <li>
-                <a href="/faq" className="hover:text-white">
-                  Kontakt support
+                <a href="/kontaktinformation" className="hover:text-neutral-900">
+                  Kontaktinformation
+                </a>
+              </li>
+              <li>
+                <a href="/cookies" className="hover:text-neutral-900">
+                  Præferencer for cookies
                 </a>
               </li>
             </ul>
           </div>
+
+          {/* Højre kolonne: Kontakt + FAQ */}
+          <div className="place-self-start text-xs text-neutral-600">
+            <nav className="flex flex-col space-y-2">
+              <a href="/kontakt" className="hover:text-neutral-900">
+                Kontakt
+              </a>
+              <a href="/faq" className="hover:text-neutral-900">
+                Ofte stillede spørgsmål
+              </a>
+            </nav>
+          </div>
         </div>
 
-        {/* Bottom line */}
-        <div className="mt-10 border-t border-white/10 pt-4 text-xs text-neutral-500 flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
-          <span>© {new Date().getFullYear()} ANSTRØJ. Alle rettigheder forbeholdes.</span>
-          <div className="flex gap-4">
-            <a href="/vilkar" className="hover:text-neutral-300">
-              Handelsbetingelser
-            </a>
-            <a href="/privatliv" className="hover:text-neutral-300">
-              Privatlivspolitik
-            </a>
-          </div>
+        {/* STREG I MIDTEN (forbliver centreret) */}
+        <div className="mt-12 border-t border-neutral-200" />
+
+        {/* Copyright – centreret og ikke fed */}
+        <div className="mt-6 text-xs text-neutral-600 text-center font-normal">
+          © {year}, Anstrøj Lab. Alle rettigheder forbeholdes.
         </div>
       </div>
     </footer>
