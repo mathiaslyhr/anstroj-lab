@@ -6,7 +6,7 @@ export default function Transparency() {
       id="gennemsigtighed"
       className="relative z-10 flex h-screen flex-col md:flex-row bg-white"
     >
-      {/* Venstre: tekst (centreret) */}
+      {/* Venstre: tekst */}
       <div className="flex flex-1 items-center justify-center px-6 md:px-16">
         <div className="max-w-md text-center md:text-left">
           <h2 className="mb-6 text-2xl md:text-3xl font-semibold">
@@ -30,11 +30,12 @@ export default function Transparency() {
             </p>
           </div>
 
+          {/* Button */}
           <button
             type="button"
             className="group cursor-pointer flex flex-col items-start mt-6"
           >
-            <div className="flex items-center gap-3 uppercase text-[12px] tracking-[0.25em] font-normal">
+            <div className="flex items-center gap-3 uppercase text-[12px] tracking-[0.25em] font-semibold">
               <span>Lær mere</span>
               <ArrowRight
                 size={16}
@@ -47,11 +48,11 @@ export default function Transparency() {
         </div>
       </div>
 
-      {/* Højre: billede */}
+      {/* Højre billede */}
       <div className="w-full md:w-1/2 h-1/2 md:h-full">
         <img
           src="/img/download-1.jpg"
-          alt="Gennemsigtighed hos Anstrøg"
+          alt="Gennemsigtighed hos Anstrøj"
           className="h-full w-full object-cover"
         />
       </div>

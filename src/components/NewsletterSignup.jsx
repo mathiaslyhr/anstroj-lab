@@ -1,44 +1,68 @@
+import { useState } from "react";
+import { CheckCircle } from "lucide-react";
+
 export default function NewsletterSignup() {
-    const handleSubmit = (e) => {
-      e.preventDefault();
-      // Her kan I koble rigtigt signup på (Klaviyo, Mailchimp, Shopify, osv.)
-      console.log("Newsletter submit");
-    };
-  
-    return (
-      <section className="bg-white py-16 md:py-20">
-        <div className="mx-auto w-full max-w-6xl px-6 md:px-8">
-          <div className="rounded-3xl border border-neutral-200 px-8 py-10 md:px-14 md:py-14 bg-white">
-            <div className="max-w-xl">
-              <h2 className="text-2xl md:text-3xl font-semibold mb-3">
-                Nyheder fra Anstrøj
-              </h2>
-              <p className="text-sm md:text-base text-neutral-700 mb-6">
-                Få besked om nye dufte, limited drops og historier fra værkstedet.
-                Ingen spam – kun dufte, der giver mening.
-              </p>
-            </div>
-  
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSubmitted(true);
+  };
+
+  return (
+    <section className="h-screen flex items-center justify-center bg-white">
+      <div className="w-full max-w-3xl px-6 text-center">
+        {!submitted ? (
+
+          <div className="px-4 py-10">
+            <h2 className="text-2xl md:text-3xl font-semibold mb-4">
+              Få 10% rabat på din første ordre
+            </h2>
+
+            <p className="text-sm md:text-base text-neutral-700 mb-8">
+              Tilmeld dig vores nyhedsbrev og få tidlig adgang til nye dufte,
+              limited releases og historier fra værkstedet.
+            </p>
+
             <form
               onSubmit={handleSubmit}
-              className="flex flex-col gap-4 md:flex-row md:items-center"
+              className="flex flex-col gap-4 md:flex-row md:items-center justify-center"
             >
               <input
                 type="email"
                 required
                 placeholder="Din e-mailadresse"
-                className="w-full md:flex-1 rounded-full border border-neutral-300 px-4 py-3 text-sm outline-none focus:border-black"
+                className="w-full md:flex-1 rounded-full border border-neutral-300 px-4 py-3 text-sm outline-none focus:border-black placeholder:font-normal"
               />
+
+
               <button
                 type="submit"
-                className="rounded-full border border-black px-6 py-3 text-[12px] uppercase tracking-[0.2em] hover:bg-black hover:text-white transition-colors"
+                className="cursor-pointer rounded-full border px-6 py-3 text-[12px] uppercase tracking-[0.2em]
+                           bg-[#39516A] text-white border-[#39516A]
+                           hover:bg-white hover:text-black hover:border-black
+                           transition-colors duration-200"
               >
                 Tilmeld
               </button>
             </form>
           </div>
-        </div>
-      </section>
-    );
-  }
-  
+        ) : (
+
+          <div className="flex flex-col items-center text-center py-10">
+            <CheckCircle className="text-green-600 w-14 h-14 mb-6" />
+
+            <h2 className="text-2xl md:text-3xl font-semibold mb-3">
+              Tak for din tilmelding!
+            </h2>
+
+            <p className="text-neutral-700 max-w-md text-sm md:text-base">
+              Din rabatkode på 10% er sendt til din indbakke.  
+              Vi glæder os til at dele nye dufte og historier med dig.
+            </p>
+          </div>
+        )}
+      </div>
+    </section>
+  );
+}
