@@ -8,29 +8,32 @@ export default function FeaturedProductsSlider() {
   const products = [
     {
       id: 1,
+      slug: "no-doubt",
       name: "No Doubt",
       subtitleLine1: "Noter af amber, cedertræ, sandeltræ,",
       subtitleLine2: "hvid musk og vanilje.",
-      image: "/img/Anstrog0549.jpg",
+      image: "/img/no-doubt.jpg",
     },
     {
       id: 2,
+      slug: "calm",
       name: "Calm",
       subtitleLine1: "Noter af pink peber, sort peber,",
       subtitleLine2: "grapefrugt, vetiver og bourbon-vanilje.",
-      image: "/img/Anstrog0555.jpg",
+      image: "/img/calm.jpg",
     },
     {
       id: 3,
+      slug: "pleasant",
       name: "Pleasant",
       subtitleLine1: "Noter af bergamot, jasmin, oud,",
       subtitleLine2: "egetræsmos og amber.",
-      image: "/img/Anstrog0553.jpg",
+      image: "/img/pleasent.jpg",
     },
   ];
 
   // -----------------------
-  // FIXED SCROLL HANDLER
+  // SCROLL HANDLER
   // -----------------------
   const handleScroll = (e) => {
     const container = e.target;
@@ -59,8 +62,9 @@ export default function FeaturedProductsSlider() {
     });
   };
 
-  const goToProduct = (id) => {
-    window.location.href = `/produkter/${id}`;
+  // bruger slug i stedet for id
+  const goToProduct = (slug) => {
+    window.location.href = `/produkter/${slug}`;
   };
 
   return (
@@ -104,7 +108,7 @@ export default function FeaturedProductsSlider() {
 
                 <div className="mt-3 flex justify-end">
                   <button
-                    onClick={() => goToProduct(p.id)}
+                    onClick={() => goToProduct(p.slug)}
                     className="group inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] cursor-pointer"
                   >
                     <span>Køb</span>
