@@ -4,6 +4,7 @@ import notesData from "../data/notes.json";
 export default function NotesModule({ notesSelected = [] }) {
   const [activeNote, setActiveNote] = useState(null);
 
+
   const notes = notesData.filter(n => notesSelected.includes(n.id));
 
   return (
@@ -36,7 +37,7 @@ export default function NotesModule({ notesSelected = [] }) {
             onClick={(e) => e.stopPropagation()}
           >
             <button
-              className="absolute top-3 right-3 hover:text-stone-700"
+              className="absolute top-3 right-3 hover:text-stone-700 cursor-pointer"
               onClick={() => setActiveNote(null)}
             >
               ✕

@@ -60,6 +60,7 @@ export default function ProfileCard({ profile, onShare, }) {
             bg-white
             border
             px-4 py-2
+            cursor-pointer
             rounded-md
             text-sm
             hover:bg-[#39516A]

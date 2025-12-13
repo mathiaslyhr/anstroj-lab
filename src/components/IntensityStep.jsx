@@ -57,7 +57,7 @@ export default function IntensityStep({ onNext, onBack }) {
       {/* TEXT SECTION */}
       <div className="flex flex-col h-full">
        <div>
-            <h1 className="text-3xl font-medium mb-4">
+            <h1 className=" mb-4">
             Hvordan foretrækker du, at din duft opfører sig?
             </h1>
 
@@ -106,7 +106,7 @@ export default function IntensityStep({ onNext, onBack }) {
 
         <button
           onClick={() => onNext(current.id)}
-          className="px-6 py-2 bg-[#39516A] text-white hover:bg-[#2f4355] transition-all"
+          className="px-6 py-2 bg-[#39516A] cursor-pointer text-white hover:bg-[#2f4355] transition-all"
         >
           Næste
         </button>

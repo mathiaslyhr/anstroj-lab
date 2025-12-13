@@ -17,7 +17,7 @@ export default function SituationsStep({  onNext, onBack }) {
 
       {/* heading */}
       <div>
-        <h1 className="text-3xl px-6 font-medium mb-4">
+        <h1 className="px-6 mb-4">
           Dufte passer ind i vores rytmer og rutiner.
         </h1>
 

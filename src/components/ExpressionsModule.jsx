@@ -53,12 +53,12 @@ export default function ExpressionModule({ expression }) {
         </div>
 
         {/* Tagline */}
-        <p className="text-sm font-medium text-stone-600 italic">
+        <p className="text-sm font-medium italic">
           {taglines[exp.id]}
         </p>
 
         {/* Long explanation */}
-        <p className="text-sm text-stone-700 leading-relaxed">
+        <p className="text-sm  leading-relaxed">
           {explainers[exp.id]}
         </p>
       </div>
