@@ -21,24 +21,35 @@ export default function NotesStep({ onNext, onBack }) {
 }
 
   return (
-    <div className="px-6 h-[90vh] flex flex-col justify-between">
+    <div className="px-6 pt-10 h-[90vh] flex flex-col justify-between">
 
       {/* TOP SECTION */}
       <div className="flex gap-12 w-full">
 
-        {/* LEFT: BIG INFO BOX */}
-        <div className="w-[50%] h-(60%) bg-[#DCDCDC] rounded-xl flex items-center justify-center px-6 text-center">
-          {activeNote ? (
-            <p className="text-stone-800 leading-relaxed text-lg">{activeNote.description}</p>
-          ) : (
-            <p className="text-stone-700">Klik på en note for at se mere om den.</p>
-          )}
+        {/* INFO BOX */}
+        <div
+          className="w-[50%] h-full rounded-xl flex items-center justify-center px-10 text-center relative overflow-hidden"
+          style={{
+            backgroundImage: `url(${activeNote ? activeNote.image : "/img/lab/bg-notes.jpg"})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center"
+          }}
+        >
+          {/* Blur overlay */}
+          <div className="absolute inset-0 bg-white/10 backdrop-blur-xs"></div>
+
+          {/* Text */}
+          <p className="relative text-white z-10 leading-relaxed text-lg">
+            {activeNote
+              ? activeNote.description
+              : "Klik på en note for at se mere om den."}
+          </p>
         </div>
 
         {/* RIGHT: TITLE + NOTE GRID */}
         <div className="w-[55%]">
 
-          <h1 className="text-3xl font-medium mb-4">Vælg de noter, du foretrækker.</h1>
+          <h1 className="mb-4">Vælg de noter, du foretrækker.</h1>
 
           <h3 className="font-normal mb-10 leading-relaxed">
             Den 2 noter du vælger guider os tættere på den rigtige duftprofil til dig.
@@ -54,16 +65,33 @@ export default function NotesStep({ onNext, onBack }) {
                   key={note.id}
                   onClick={() => toggleNote(note.id)}
                   className={`
-                    h-35 cursor-pointer border p-4 flex items-center justify-center
-                    text-sm font-medium transition-all
+                    h-35 cursor-pointer rounded-xl p-4 flex items-center justify-center
+                    text-sm font-medium transition-all relative overflow-hidden
+                    border
                     ${
                       isSelected
-                        ? "bg-[#39516A] text-white border-[#39516A]"
-                        : "bg-[#E8E8E8] border-[#D4D4D4] hover:border-[#999]"
+                        ? "border-[#39516A] ring-2 ring-[#39516A] text-white"
+                        : "border-[#D4D4D4] hover:border-[#999] text-white"
                     }
                   `}
+                  style={{
+                    backgroundImage: `url(${note.image})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center"
+                  }}
                 >
-                  {note.label}
+                  {/* mørk overlay */}
+                  <div
+                    className={`
+                      absolute inset-0 transition-all
+                      ${isSelected ? "bg-black/40" : "bg-black/25 hover:bg-black/35"}
+                    `}
+                  />
+
+                  {/* note titel */}
+                  <span className="relative z-10 drop-shadow-md">
+                    {note.label}
+                  </span>
                 </button>
               );
             })}
@@ -86,9 +114,9 @@ export default function NotesStep({ onNext, onBack }) {
           onClick={() => onNext(selectedNotes)}
           disabled={selectedNotes.length === 0}
           className={`
-            px-6 py-2 transition-all
+            px-6 py-2 transition-all cursor-pointer
             ${
-              selectedNotes
+              selectedNotes.length > 0
                 ? "bg-[#39516A] text-white hover:bg-[#2f4355]"
                 : "bg-stone-300 text-stone-500 cursor-not-allowed"
             }

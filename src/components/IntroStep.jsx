@@ -27,7 +27,13 @@ export default function IntroStep({ onNext }) {
         </div>
 
         <div className="flex justify-center">
-            <button onClick={() => navigate("/produkter")} className="flex">Spring over og gå til dufte <ArrowRight/></button>
+          <button
+          onClick={() => navigate("/produkter")}
+          className="flex items-center gap-1 cursor-pointer hover:text-[#39516A] transition-all duration-200 group"
+        >
+          Spring over og gå til dufte
+          <ArrowRight className="transition-all duration-200 group-hover:translate-x-1" />
+        </button>
         </div>
 
 

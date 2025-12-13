@@ -9,7 +9,7 @@ export default function SensitivityStep({ onNext, onBack }) {
 
       {/* TEXT TOP */}
       <div>
-        <h1 className="text-3xl font-medium mb-4">
+        <h1 className=" mb-4">
           Nogle dufte kan virke mere overvældende end andre.
         </h1>
 
@@ -60,7 +60,7 @@ export default function SensitivityStep({ onNext, onBack }) {
           onClick={() => onNext(selected)}
           disabled={!selected}
           className={`
-            px-6 py-2 font-normal transition-all
+            px-6 py-2 font-normal transition-all cursor-pointer
             ${
               selected
                 ? "bg-[#39516A] text-white hover:bg-[#2f4355]"

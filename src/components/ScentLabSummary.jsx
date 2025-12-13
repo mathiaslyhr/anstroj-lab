@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import { ArrowLeft } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import SummaryNav from "./SummaryNav";
 import ProfileCard from "./ProfileCard";
 import { useEffect } from "react";
@@ -17,6 +18,7 @@ export default function ScentLabSummary({ answers, onReset, }) {
 
   const containerRef = useRef(null);
   const canvasRef = useRef(null);
+  const navigate = useNavigate();
   const [isPanning, setIsPanning] = useState(false);
   const [lastPos, setLastPos] = useState({ x: 0, y: 0 });
 
@@ -27,7 +29,7 @@ export default function ScentLabSummary({ answers, onReset, }) {
   setIsPanning(true);
   setLastPos({ x: e.clientX, y: e.clientY });
 
-  canvasRef.current.style.transform = "scale(0.97)";
+  canvasRef.current.style.transform = "scale(0.90)";
 };
 
   // End pan
@@ -84,12 +86,20 @@ export default function ScentLabSummary({ answers, onReset, }) {
       onMouseMove={handleMouseMove}
     >
         <SummaryNav onReset={onReset} answers={answers}/>
-        <div className="fixed z-100 bottom-10 left-35 -translate-x-1/2 w-[15%] text-xs">
+
+        <div className="fixed z-100 bottom-10 left-35 -translate-x-1/2 w-[15%] text-xs ">
             <p>Her kan du trække rundt på skærmen og udforske din personlige duftprofil.</p>
+        </div>
+
+         <div 
+            onClick={() => navigate("/")}
+            className="fixed top-6 left-6 flex items-center gap-2 cursor-pointer  z-101  ui-element hover:opacity-80 transition-all duration-200 group"
+            >
+            <ArrowLeft className="transition-all duration-200 group-hover:-translate-x-1" size={15} />
+            Tilbage
         </div>
       {/* BIG CANVAS */}
       <div ref={canvasRef} className="summary-canvas relative">
-        <div className="fixed flex items-center ui-element"><ArrowLeft size={15}/> Tilbage</div>
 
        {/* modules */}
         
@@ -102,15 +112,15 @@ export default function ScentLabSummary({ answers, onReset, }) {
         </div>
 
         {/* steminger modul */}
-        <div className=" absolute top-[calc(50%+100px)]  left-[calc(50%+600px)] -translate-y-1/2 ">
+        <div className=" absolute top-[calc(20%)]  right-[calc(50%+400px)] -translate-y-1/2 ">
           <h2 className="pb-6">Stemninger du matcher</h2>
             <div className="module">
-            <MoodModule moodsSelected={[answers.moods]}/>
+            <MoodModule moodsSelected={answers.moods}/>
             </div>
         </div>
 
         {/* foretrukne noter modul */}
-        <div className="note-block absolute top-[calc(50%+180px)]  right-[calc(50%+500px)] -translate-y-1/2">
+        <div className="note-block absolute top-[calc(50%+180px)]  right-[calc(50%+400px)] -translate-y-1/2">
             <h2 className="pb-6">Dine foretrukne duftnoter</h2>
             <div className="module">
            <NotesModule notesSelected={answers.notes}/>
@@ -118,7 +128,7 @@ export default function ScentLabSummary({ answers, onReset, }) {
         </div>
 
         {/* situationer modul */}
-        <div className="absolute top-[calc(20%)]  right-[calc(50%+400px)] -translate-y-1/2">
+        <div className="absolute top-[calc(40%)]  right-[calc(50%+900px)] -translate-y-1/2">
             <h2 className="pb-6">Du nyder at  </h2>
             <div className="">
            <SituationModule situationsSelected={answers.situations}/>
@@ -126,7 +136,7 @@ export default function ScentLabSummary({ answers, onReset, }) {
         </div>
 
         {/* intensitet og sensitivitet modul */}
-        <div className="absolute top-[calc(20%)]  left-[calc(50%+650px)] -translate-y-1/2">
+        <div className="absolute top-[calc(10%)]  left-[calc(50%+650px)] -translate-y-1/2">
             <h2 className="pb-6">Finjusteret til din komfort</h2>
             <div className="module">
            <IntensitySensitivityModule intensity={answers.intensity} sensitivity={answers.sensitivity}/>
@@ -142,7 +152,7 @@ export default function ScentLabSummary({ answers, onReset, }) {
         </div>
 
         {/* anbefalinger modul */}
-        <div className="absolute top-[calc(5%)]  left-[calc(50%)]">
+        <div className="absolute top-1/2  left-[calc(50%+700px)] -translate-y-1/2">
             <h2 className="pb-6 w-[60%]">Her er de bedste parfume macthes til dig</h2>
             <div className="module">
            <RecommendationModule answers={answers}/>
