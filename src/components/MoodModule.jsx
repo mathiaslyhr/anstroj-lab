@@ -8,7 +8,7 @@ export default function MoodModule({ moodsSelected = [] }) {
   const selected = moodData.filter((m) => selectedArray.includes(m.id));
 
   return (
-    <div className="bg-white p-6 rounded-xl w-[380px] ui-element">
+    <div className="bg-white p-4 rounded-xl w-[380px] ui-element">
 
       <div className="grid grid-cols-2 gap-4">
         {selected.map((mood) => (

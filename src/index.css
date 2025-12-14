@@ -20,6 +20,7 @@
 /* Stop overscroll bounce (vigtigt til hero sektionen!) */
 html, body {
   overscroll-behavior-y: none;
+  background-color: #fdfbf7;
 }
 
 :root {
