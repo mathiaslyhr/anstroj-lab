@@ -4,6 +4,7 @@
   height: 100vh;
   overflow: hidden;
   cursor: grab;
+  transform-origin: center center;
   scroll-behavior: auto;
 }
 
@@ -19,17 +20,24 @@
 .summary-canvas {
   position: relative;
   width: 200vw;
-  height: 200vh;
+  height: 290vh;
   background: #f9f7f5;
   transition: transform 0.8s ease; 
   transform-origin: center center;
 }
+.canvas-outer{
+    width: 100vw;
+  height: 100vh;
+  overflow: scroll;
+  background: #f9f7f5;
+}
+
 
 /* SMÅ MODULER PÅ CANVAS */
 .module {
   position: absolute;
   background: white;
   padding: 20px;
-  border-radius: 16px;
+  border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }

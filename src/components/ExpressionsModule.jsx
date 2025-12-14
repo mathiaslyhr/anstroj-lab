@@ -39,12 +39,12 @@ export default function ExpressionModule({ expression }) {
 
       {/* TOP IMAGE */}
       <div
-        className="h-40 bg-cover bg-center"
+        className="h-60 bg-cover bg-center"
         style={{ backgroundImage: `url(${exp.largeImage})` }}
       />
 
       {/* CONTENT */}
-      <div className="p-6 space-y-3">
+      <div className="p-4 space-y-3">
 
         {/* Expression label + icon */}
         <div className="flex items-center gap-3">

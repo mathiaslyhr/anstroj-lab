@@ -1,7 +1,7 @@
 import { useEffect, useState, useMemo } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const intensityScale = {
   subtle: 1,
@@ -93,6 +93,7 @@ if (answers.intensity === "subtle" && product.intensity === "strong") {
 
 export default function RecommendationModule({ answers }) {
   const [products, setProducts] = useState([]);
+  const navigate = useNavigate();
 
   const recommended = useMemo(() => {
   if (!products.length) return [];
@@ -154,8 +155,8 @@ export default function RecommendationModule({ answers }) {
                 {product.description}
               </p>
 
-              <button className="cart-btn bg-[#39516A] p-2 w-[80%] text-white font-normal cursor-pointer">
-                Tilføj til kurv
+              <button onClick={() => navigate(`/produkter/${product.slug}`)} className="cart-btn bg-[#39516A] p-2 w-[80%] text-white font-normal cursor-pointer">
+                Se duft
               </button>
             </div>
           </Link>
