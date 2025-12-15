@@ -172,7 +172,7 @@ export default function NotesStep({ onNext, onBack }) {
                   }}
                 >
                   <div
-                    className={`absolute inset-0 transition-all
+                    className={`absolute inset-0 transition-all rounded-xl
                       ${isSelected ? "bg-black/40" : "bg-black/25 hover:bg-black/35"}
                     `}
                   />
