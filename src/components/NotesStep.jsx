@@ -1,34 +1,38 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import notes from "../data/notes.json";
 
 export default function NotesStep({ onNext, onBack }) {
   const [selectedNotes, setSelectedNotes] = useState([]);
-
   const [activeNote, setActiveNote] = useState(null);
+
   const [loading, setLoading] = useState(false);
-  const [typedText, setTypedText] = useState("");
-  const [typing, setTyping] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
 
-  // Caching
+//  clean ai tekst
+  function cleanAIText(str) {
+    if (!str) return "";
+    return String(str)
+      .replace(/^undefined/i, "")
+      .replace(/undefined$/i, "")
+      .replace(/^\s+/, "")
+      .replace(/^\uFEFF/, "")
+      .trim();
+  }
 
- function getCachedNote(id) {
-  const cached = localStorage.getItem(`note-cache-v2-${id}`);
-  return cached ? JSON.parse(cached) : null;
-}
+  // cache
+  function getCachedNote(id) {
+    const cached = localStorage.getItem(`note-cache-v2-${id}`);
+    return cached ? JSON.parse(cached) : null;
+  }
 
-function saveCachedNote(id, data) {
-  localStorage.setItem(`note-cache-v2-${id}`, JSON.stringify(data));
-}
+  function saveCachedNote(id, data) {
+    localStorage.setItem(`note-cache-v2-${id}`, JSON.stringify(data));
+  }
 
-
-//  fetch ai note detaljer
-
+  // fetch ai detaljer
   async function fetchAIDetails(id) {
     setErrorMsg("");
     setLoading(true);
-    setTypedText("");
-    setTyping(false);
 
     const cached = getCachedNote(id);
     if (cached) {
@@ -55,7 +59,7 @@ function saveCachedNote(id, data) {
     }
   }
 
-  // note handle sektion
+  // handle note sektion
 
   async function toggleNote(id) {
     let newSelection = [...selectedNotes];
@@ -69,7 +73,6 @@ function saveCachedNote(id, data) {
 
     setSelectedNotes(newSelection);
 
-    // hvis intet valgt clear aktive note
     if (newSelection.length === 0) {
       setActiveNote(null);
       return;
@@ -78,60 +81,18 @@ function saveCachedNote(id, data) {
     const noteId = newSelection[newSelection.length - 1];
     const note = notes.find(n => n.id === noteId);
 
-    if (!note) return;
-
-    const extra = await fetchAIDetails(note.id);
+    const extra = await fetchAIDetails(noteId);
 
     setActiveNote({
       ...note,
-      ai: extra || null
+      ai: extra ? {
+        ...extra,
+        description: cleanAIText(extra.description)
+      } : null
     });
   }
 
-  function cleanAIText(str) {
-  if (!str) return "";
-
-  return String(str)
-    .replace(/^undefined/, "")             // fjern undefined i starten
-    .replace(/undefined$/i, "")           // fjern undefined i slutningen
-    .replace(/^\s+/, "")                   // fjern usynlige whitespace/newlines
-    .replace(/^\uFEFF/, "")                // fjern BOM
-    .trim();                               // normal trim
-}
-
-  
-  // type effect
-  
-
-  useEffect(() => {
-  let raw = activeNote?.ai?.description;
-  if (!raw) return;
-
-  // Rens teksten før typing starter
-  const text = cleanAIText(raw);
-
-  let i = 0;
-  setTypedText("");
-  setTyping(true);
-
-  const interval = setInterval(() => {
-    if (i >= text.length) {
-      clearInterval(interval);
-      setTyping(false);
-      return;
-    }
-
-    setTypedText(prev => prev + text[i]);
-    i++;
-  }, 18);
-
-  return () => clearInterval(interval);
-}, [activeNote]);
-
-
-
-
-  const currentNote = activeNote ?? null;
+  const current = activeNote ?? null;
 
   return (
     <div className="px-6 pt-10 h-[90vh] flex flex-col justify-between">
@@ -140,57 +101,57 @@ function saveCachedNote(id, data) {
 
         {/* LEFT PREVIEW */}
         <div
-          className="w-[50%] h-full rounded-xl flex items-center justify-center px-10 
-                     text-center relative overflow-hidden"
+          className="w-[50%] h-full rounded-xl flex items-center justify-center px-10 text-center relative overflow-hidden"
           style={{
-            backgroundImage: `url(${currentNote ? currentNote.image : "/img/lab/bg-notes.jpg"})`,
+            backgroundImage: `url(${current ? current.image : "/img/lab/bg-notes.jpg"})`,
             backgroundSize: "cover",
             backgroundPosition: "center"
           }}
         >
           <div className="absolute inset-0 bg-white/10 backdrop-blur-xs"></div>
 
-          <div className="relative text-white z-10 leading-relaxed text-lg">
+          <div className="relative z-10 text-white leading-relaxed text-lg">
 
-            {!currentNote && <p>Klik på en note for at se mere om den.</p>}
+            {/* No selection */}
+            {!current && <p>Klik på en note for at se mere om den.</p>}
 
+            {/* Loading skelet */}
             {loading && (
               <div className="animate-pulse space-y-4">
                 <div className="h-3 bg-white/30 rounded w-3/4"></div>
                 <div className="h-3 bg-white/30 rounded w-1/2"></div>
-                <p className="text-sm opacity-80 italic">AI analyserer noten...</p>
+                <p className="opacity-80 italic text-sm">AI analyserer noten…</p>
               </div>
             )}
 
+            {/* Error fallback til lokal tekst */}
             {errorMsg && !loading && (
-              <p className="text-sm">{currentNote?.description}</p>
+              <p className="text-sm">{current?.description}</p>
             )}
 
-            {!loading && currentNote?.ai && (
+            {/* AI tekst */}
+            {!loading && current?.ai && (
               <p className="whitespace-pre-line">
-                {typedText}
-                {typing && <span className="animate-pulse">|</span>}
+                {current.ai.description}
               </p>
             )}
 
-            {!loading && !currentNote?.ai && currentNote?.description && (
-              <p>{currentNote.description}</p>
+            {/* fallback uden AI */}
+            {!loading && !current?.ai && current?.description && (
+              <p>{current.description}</p>
             )}
-
           </div>
         </div>
 
-        {/* RIGHT NOTE GRID */}
+        {/* RIGHT GRID */}
         <div className="w-[55%]">
-
           <h1 className="mb-4">Vælg de noter, du foretrækker.</h1>
-
           <h3 className="font-normal mb-10 leading-relaxed">
             De 2 noter du vælger guider os tættere på den rigtige duftprofil til dig.
           </h3>
 
           <div className="grid grid-cols-3 gap-6">
-            {notes.map(note => {
+            {notes.map((note) => {
               const isSelected = selectedNotes.includes(note.id);
 
               return (
@@ -198,14 +159,11 @@ function saveCachedNote(id, data) {
                   key={note.id}
                   onClick={() => toggleNote(note.id)}
                   className={`
-                    h-35 cursor-pointer rounded-xl p-4 flex items-center justify-center
-                    text-sm font-medium transition-all relative overflow-hidden
-                    border
-                    ${
-                      isSelected
-                        ? "border-[#39516A] ring-2 ring-[#39516A] text-white"
-                        : "border-[#D4D4D4] hover:border-[#999] text-white"
-                    }
+                    h-35 rounded-xl p-4 flex items-center justify-center cursor-pointer
+                    text-sm font-medium relative border transition-all
+                    ${isSelected
+                      ? "border-[#39516A] ring-2 ring-[#39516A] text-white"
+                      : "border-[#D4D4D4] hover:border-[#999] text-white"}
                   `}
                   style={{
                     backgroundImage: `url(${note.image})`,
@@ -214,30 +172,21 @@ function saveCachedNote(id, data) {
                   }}
                 >
                   <div
-                    className={`
-                      absolute inset-0 transition-all
+                    className={`absolute inset-0 transition-all
                       ${isSelected ? "bg-black/40" : "bg-black/25 hover:bg-black/35"}
                     `}
                   />
-
-                  <span className="relative z-10 drop-shadow-md">
-                    {note.label}
-                  </span>
+                  <span className="relative z-10 drop-shadow-md">{note.label}</span>
                 </button>
               );
             })}
           </div>
-
         </div>
       </div>
 
-      <div className="fixed bottom-0 left-0 right-0 
-                      flex justify-between items-center 
-                      px-6 py-4 z-50">
-        <button
-          onClick={onBack}
-          className="text-sm text-stone-500 hover:text-stone-800"
-        >
+      {/* NAVIGATION */}
+      <div className="fixed bottom-0 left-0 right-0 flex justify-between items-center px-6 py-4 z-50">
+        <button onClick={onBack} className="text-sm text-stone-500 hover:text-stone-800">
           Tilbage
         </button>
 
@@ -246,11 +195,9 @@ function saveCachedNote(id, data) {
           disabled={selectedNotes.length === 0}
           className={`
             px-6 py-2 transition-all cursor-pointer
-            ${
-              selectedNotes.length > 0
-                ? "bg-[#39516A] text-white hover:bg-[#2f4355]"
-                : "bg-stone-300 text-stone-500 cursor-not-allowed"
-            }
+            ${selectedNotes.length > 0
+              ? "bg-[#39516A] text-white hover:bg-[#2f4355]"
+              : "bg-stone-300 text-stone-500 cursor-not-allowed"}
           `}
         >
           Næste
