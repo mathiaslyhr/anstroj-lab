@@ -12,14 +12,15 @@ export default function NotesStep({ onNext, onBack }) {
 
   // Caching
 
-  function getCachedNote(id) {
-    const cached = localStorage.getItem(`note-cache-${id}`);
-    return cached ? JSON.parse(cached) : null;
-  }
+ function getCachedNote(id) {
+  const cached = localStorage.getItem(`note-cache-v2-${id}`);
+  return cached ? JSON.parse(cached) : null;
+}
 
-  function saveCachedNote(id, data) {
-    localStorage.setItem(`note-cache-${id}`, JSON.stringify(data));
-  }
+function saveCachedNote(id, data) {
+  localStorage.setItem(`note-cache-v2-${id}`, JSON.stringify(data));
+}
+
 
 //  fetch ai note detaljer
 
@@ -87,32 +88,46 @@ export default function NotesStep({ onNext, onBack }) {
     });
   }
 
+  function cleanAIText(str) {
+  if (!str) return "";
+
+  return String(str)
+    .replace(/^undefined/, "")             // fjern undefined i starten
+    .replace(/undefined$/i, "")           // fjern undefined i slutningen
+    .replace(/^\s+/, "")                   // fjern usynlige whitespace/newlines
+    .replace(/^\uFEFF/, "")                // fjern BOM
+    .trim();                               // normal trim
+}
+
   
   // type effect
   
 
   useEffect(() => {
-    const text = activeNote?.ai?.description;
+  let raw = activeNote?.ai?.description;
+  if (!raw) return;
 
-    if (!text || typeof text !== "string") return;
+  // Rens teksten før typing starter
+  const text = cleanAIText(raw);
 
-    let index = 0;
-    setTypedText("");
-    setTyping(true);
+  let i = 0;
+  setTypedText("");
+  setTyping(true);
 
-    const interval = setInterval(() => {
-      if (index >= text.length) {
-        clearInterval(interval);
-        setTyping(false);
-        return;
-      }
+  const interval = setInterval(() => {
+    if (i >= text.length) {
+      clearInterval(interval);
+      setTyping(false);
+      return;
+    }
 
-      setTypedText(prev => prev + text[index]);
-      index++;
-    }, 18);
+    setTypedText(prev => prev + text[i]);
+    i++;
+  }, 18);
 
-    return () => clearInterval(interval);
-  }, [activeNote]);
+  return () => clearInterval(interval);
+}, [activeNote]);
+
 
 
 
