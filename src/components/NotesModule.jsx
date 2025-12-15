@@ -12,7 +12,8 @@ export default function NotesModule({ notesSelected = [] }) {
     setErrorMsg("");
     setLoading(true);
     try {
-      const res = await fetch(`/api/note-info?note=${encodeURIComponent(id)}`);
+      const res = await fetch(`/api/note-info?note=${id}`);
+      if (!res.ok) throw new Error("Kunne ikke hente note");
       const data = await res.json();
 
       if (!res.ok || data.error) {
