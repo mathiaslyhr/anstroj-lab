@@ -73,7 +73,10 @@ export default function MoodStep({ onNext, onBack } ) {
       </div>
 
    {/* navigation */}
-      <div className="flex px-6 justify-between mt-10 mb-6 items-center">
+      <div className="fixed bottom-0 left-0 right-0 
+      flex justify-between items-center 
+      px-6 py-4
+      z-50">
         <button onClick={onBack} className="text-sm text-stone-500 hover:text-stone-800">
           Tilbage
         </button>

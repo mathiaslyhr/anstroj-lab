@@ -8,18 +8,24 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import ScentLabFlow from "./components/ScentLabFlow";
 import SavedProfilePage from "./pages/SavedProfilePage";
+import Favorites from "./pages/Favorites";
+import { FavoritesProvider } from "./context/FavoritesContext"
 
 export default function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/om-os" element={<AboutPage />} />
-      <Route path="/produkter" element={<ProductsPage />} />
-      <Route path="/produkter/:slug" element={<ProductDetailPage />} />
-      <Route path="/lab" element={<ScentLabFlow />} />
-      <Route path="/profil/:id" element={<SavedProfilePage />} />
+    <FavoritesProvider>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/om-os" element={<AboutPage />} />
+        <Route path="/produkter" element={<ProductsPage />} />
+        <Route path="/produkter/:slug" element={<ProductDetailPage />} />
+        <Route path="/lab" element={<ScentLabFlow />} />
+        <Route path="/profil/:id" element={<SavedProfilePage />} />
+        <Route path="/favorites" element={<Favorites />} />
 
 
-    </Routes>
+
+      </Routes>
+    </FavoritesProvider>
   )
 }

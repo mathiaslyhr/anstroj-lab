@@ -1,5 +1,5 @@
 import { useState,useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Search, ShoppingBag, Heart } from "lucide-react";
 
 const linkClasses =
@@ -19,6 +19,7 @@ export default function Navbar() {
     const goAbout = () => navigate("/om-os");
     const goProducts = () => navigate("/produkter");
     const goLab = () => navigate("/lab");
+    const goFavorites = () => navigate("/favorites");
 
   const toggleMenu = () => setIsOpen((v) => !v);
   const closeMenu = () => setIsOpen(false);
@@ -32,6 +33,9 @@ export default function Navbar() {
     block h-[2px] w-6 transition-all duration-200 ease-out
     ${isDarkOnLight ? "bg-black" : "bg-white"}
   `;
+
+  const location = useLocation();
+  const isFavoritesPage = location.pathname === "/favorites";
 
   // scroll logic
   useEffect(() => {
@@ -112,11 +116,11 @@ export default function Navbar() {
 
               {/* Desktop links */}
               <div className={`hidden md:flex items-center gap-6 ${textColor}`}>
+                 <button className={linkClasses} onClick={goProducts}>
+                  Produkter
+                </button>
                 <button className={linkClasses} onClick={goAbout}>
                   Om os
-                </button>
-                <button className={linkClasses} onClick={goProducts}>
-                  Produkter
                 </button>
                 <button className={linkClasses} onClick={goLab}>
                   Scent Lab
@@ -143,8 +147,13 @@ export default function Navbar() {
               </button>
 
               {/* Wishlist */}
-              <button className="cursor-pointer hover:opacity-70 transition-opacity">
-                <Heart size={18} strokeWidth={2} stroke={iconColor} />
+              <button onClick={goFavorites} className="cursor-pointer hover:opacity-70 transition-opacity">
+                <Heart
+                  size={18}
+                  strokeWidth={2}
+                  stroke={iconColor}
+                  fill={isFavoritesPage ? "#000" : "none"} 
+                />
               </button>
 
               {/* Cart */}
@@ -175,16 +184,6 @@ export default function Navbar() {
             <button
               onClick={() => {
                 closeMenu();
-                goAbout();
-              }}
-              className="text-left py-2"
-            >
-              Om os
-            </button>
-
-            <button
-              onClick={() => {
-                closeMenu();
                 goProducts();
               }}
               className="text-left py-2"
@@ -192,6 +191,25 @@ export default function Navbar() {
               Produkter
             </button>
 
+            <button
+              onClick={() => {
+                closeMenu();
+                goAbout();
+              }}
+              className="text-left py-2"
+            >
+              Om os
+            </button>
+
+             <button
+              onClick={() => {
+                closeMenu();
+                goLab();
+              }}
+              className="text-left py-2"
+            >
+              Scent Lab
+            </button>
           </div>
         </div>
       </div>

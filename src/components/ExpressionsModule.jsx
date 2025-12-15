@@ -26,13 +26,7 @@ export default function ExpressionModule({ expression }) {
       "Din duft holdes harmonisk og afbalanceret. Vi kombinerer florale og træagtige retninger med finesse og ro."
   };
 
-  // EMOJI STYLE ICONS
-  const icons = {
-    natural: "🌿",
-    warm: "☀️",
-    confident: "🔥",
-    elegant: "✨"
-  };
+
 
   return (
     <div className="rounded-xl ui-element w-[450px] overflow-hidden  relative">
@@ -49,7 +43,6 @@ export default function ExpressionModule({ expression }) {
         {/* Expression label + icon */}
         <div className="flex items-center gap-3">
           <h2 className="text-xl font-semibold">{exp.label}</h2>
-           <span className="text-2xl">{icons[exp.id]}</span>
         </div>
 
         {/* Tagline */}
