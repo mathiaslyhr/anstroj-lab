@@ -12,16 +12,30 @@ export default function NotesModule({ notesSelected = [] }) {
 
   const notes = notesData.filter((n) => notesSelected.includes(n.id));
 
+
+  // clean ai tekst
+  function cleanAIText(str) {
+    if (!str) return "";
+
+    return String(str)
+      .replace(/^undefined/i, "")        // fjern undefined i starten
+      .replace(/undefined$/i, "")        // fjern undefined i slutningen
+      .replace(/^\s+/, "")               // leading whitespace/newlines
+      .replace(/^\uFEFF/, "")            // Byte Order Mark
+      .trim();
+  }
+
   // CACHE
   function getCachedNote(id) {
-    const cached = localStorage.getItem(`note-cache-${id}`);
+    const cached = localStorage.getItem(`note-cache-v2-${id}`);
     return cached ? JSON.parse(cached) : null;
   }
 
   function saveCachedNote(id, data) {
-    localStorage.setItem(`note-cache-${id}`, JSON.stringify(data));
+    localStorage.setItem(`note-cache-v2-${id}`, JSON.stringify(data));
   }
 
+  // fetch ai data
   async function fetchNoteDetails(id) {
     setErrorMsg("");
     setLoading(true);
@@ -57,26 +71,24 @@ export default function NotesModule({ notesSelected = [] }) {
   }
 
   // type animation
-  useEffect(() => {
-    const text = activeNote?.extra?.description;
+   useEffect(() => {
+    if (!activeNote?.extra?.description) return;
 
-    if (!text || typeof text !== "string") return;
+    const cleaned = cleanAIText(activeNote.extra.description);
+    let i = 0;
 
-    let index = 0;
     setTypedText("");
     setTyping(true);
 
     const interval = setInterval(() => {
-
-      
-      if (index >= text.length) {
+      if (i >= cleaned.length) {
         clearInterval(interval);
         setTyping(false);
         return;
       }
 
-      setTypedText((prev) => prev + text[index]);
-      index++;
+      setTypedText((p) => p + cleaned[i]);
+      i++;
     }, 15);
 
     return () => clearInterval(interval);
