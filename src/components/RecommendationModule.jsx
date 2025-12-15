@@ -1,7 +1,7 @@
 import { useEffect, useState, useMemo } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const intensityScale = {
   subtle: 1,
@@ -93,6 +93,7 @@ if (answers.intensity === "subtle" && product.intensity === "strong") {
 
 export default function RecommendationModule({ answers }) {
   const [products, setProducts] = useState([]);
+  const navigate = useNavigate();
 
   const recommended = useMemo(() => {
   if (!products.length) return [];
@@ -119,7 +120,7 @@ export default function RecommendationModule({ answers }) {
     return (
       <div className="bg-white p-6 rounded-xl ui-element w-[520px]">
         <h2 className="text-xl font-semibold mb-2">Dine anbefalede dufte</h2>
-        <p className="text-sm text-stone-600">
+        <p className="text-sm ">
           Vi kunne ikke finde et perfekt match – men du er altid velkommen til at udforske vores dufte manuelt.
         </p>
       </div>
@@ -127,10 +128,10 @@ export default function RecommendationModule({ answers }) {
   }
 
   return (
-    <div className="bg-white p-6 rounded-xl ui-element w-[520px]">
+    <div className="bg-white p-6 rounded-xl ui-element w-[550px]">
       <h2 className="text-xl font-semibold mb-2">Dine anbefalede dufte</h2>
-      <p className="text-sm text-stone-600 mb-4">
-        Ud fra dine svar har vi fundet de dufte, der passer bedst til din profil.
+      <p className="text-sm  mb-4">
+        Ud fra dine fantastiske svar har vi fundet de dufte, der passer bedst til din profil.
       </p>
 
       <div className="grid grid-cols-2 gap-4">
@@ -150,13 +151,12 @@ export default function RecommendationModule({ answers }) {
               />
 
               <h3 className="text-base font-medium mb-1">{product.name}</h3>
-              <p className="text-sm text-stone-700 mb-2">
+              <p className="text-sm  mb-2">
                 {product.description}
               </p>
-              <span className="font-normal pb-2">{product.price} kr</span>
 
-              <button className="cart-btn bg-[#39516A] p-2 w-[80%] text-white font-normal cursor-pointer">
-                Tilføj til kurv
+              <button onClick={() => navigate(`/produkter/${product.slug}`)} className="cart-btn bg-[#39516A] p-2 w-[80%] text-white font-normal cursor-pointer">
+                Se duft
               </button>
             </div>
           </Link>

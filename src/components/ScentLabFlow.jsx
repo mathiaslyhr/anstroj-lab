@@ -45,8 +45,8 @@ export default function ScentLabFlow(){
     }
     
     return(
-        <div className="pt-20" style={{ height: "calc(100vh - 80px)" }}>
-             <Navbar/>
+        <div className={step === 8 ? "" : "pt-26"} >
+             {step !== 8 && <Navbar />}
             <div className="">
                 <div 
                 key={step}

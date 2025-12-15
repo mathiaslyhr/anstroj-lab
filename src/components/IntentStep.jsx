@@ -9,7 +9,7 @@ export default function IntentStep({ onNext, onBack }) {
 
       {/* TEXT SECTION */}
       <div>
-        <h1 className="text-3xl font-medium mb-4">
+        <h1 className=" mb-4">
           Hvad håber du at finde i en duft?
         </h1>
 
@@ -29,7 +29,7 @@ export default function IntentStep({ onNext, onBack }) {
                 key={option.id}
                 onClick={() => setSelected(option.id)}
                 className={`
-                  text-left p-6 border w-full transition-all
+                  text-left p-6 border w-full transition-all cursor-pointer
                   ${
                     isSelected
                       ? "bg-[#39516A] text-white border-[#39516A]"
@@ -56,7 +56,11 @@ export default function IntentStep({ onNext, onBack }) {
       </div>
 
       {/* NAVIGATION */}
-      <div className="flex justify-between mt-16 mb-10 w-[90%] self-center">
+      <div className="fixed bottom-0 left-0 right-0 
+      flex justify-between items-center 
+      px-6 py-4
+
+      z-50">
         <button
           onClick={onBack}
           className="text-sm text-stone-500 hover:text-stone-800"
@@ -68,7 +72,7 @@ export default function IntentStep({ onNext, onBack }) {
           onClick={() => onNext(selected)}
           disabled={!selected}
           className={`
-            px-6 py-2 transition-all
+            px-6 py-2 transition-all cursor-pointer
             ${
               selected
                 ? "bg-[#39516A] text-white hover:bg-[#2f4355]"

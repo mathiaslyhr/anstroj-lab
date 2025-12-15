@@ -17,6 +17,7 @@ export default function MoodStep({ onNext, onBack } ) {
   }
   
   
+  
 
   return (
      <div className="h-full px-6 flex flex-col justify-between">
@@ -31,7 +32,7 @@ export default function MoodStep({ onNext, onBack } ) {
         <h3 className="mb-8 w-[70%] font-normal">Vælg den vibe, du føler dig mest draget af – den hjælper os med at forstå, hvilken retning din duftprofil skal bevæge sig i.</h3>
 
         {/* Options */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mt-10 w-[80%] justify-self-center">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mt-10 w-[80%] pt-4 justify-self-center">
           {moods.map((mood) => {
             const isActive = selectedMood.includes(mood.id);
             const isBlocked = !isActive && selectedMood.length === 2;
@@ -43,7 +44,7 @@ export default function MoodStep({ onNext, onBack } ) {
                 disabled={isBlocked}
                 className={`
                   relative h-40 rounded-xl overflow-hidden transition-all text-left
-                  border
+                  border 
                   ${isActive
                     ? "bg-[#39516A] text-white border-[#39516A]"
                     : "bg-[#E8E8E8] text-stone-800 border-[#D4D4D4] hover:border-[#999]"
@@ -53,15 +54,15 @@ export default function MoodStep({ onNext, onBack } ) {
               >
                 {/* Mood image */}
                 <div
-                  className={`absolute inset-0 bg-cover bg-center transition-transform group
+                  className={`absolute inset-0 bg-cover bg-center transition-transform group 
                     ${isActive ? "opacity-40" : "group-hover:scale-105"}
                   `}
                   style={{ backgroundImage: `url(${mood.image})` }}
                 />
 
                 {/* Text overlay */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <p className={`font-medium text-lg ${isActive ? "text-white" : "text-black"}`}>
+                <div className="absolute inset-0 flex items-center justify-center backdrop-blur-[3px]">
+                  <p className={`font-medium text-lg  ${isActive ? "text-white" : "text-black"}`}>
                     {mood.label}
                   </p>
                 </div>
@@ -72,7 +73,10 @@ export default function MoodStep({ onNext, onBack } ) {
       </div>
 
    {/* navigation */}
-      <div className="flex px-6 justify-between mt-10 mb-6 items-center">
+      <div className="fixed bottom-0 left-0 right-0 
+      flex justify-between items-center 
+      px-6 py-4
+      z-50">
         <button onClick={onBack} className="text-sm text-stone-500 hover:text-stone-800">
           Tilbage
         </button>
@@ -81,9 +85,9 @@ export default function MoodStep({ onNext, onBack } ) {
           onClick={() => onNext(selectedMood)}
           disabled={selectedMood.length === 0}
           className={`
-            px-6 py-2 transition-all
+            px-6 py-2 transition-all cursor-pointer
             ${
-              selectedMood
+              selectedMood.length > 0
                 ? "bg-[#39516A] text-white hover:bg-[#2f4355]"
                 : "bg-stone-300 text-stone-500 cursor-not-allowed"
             }

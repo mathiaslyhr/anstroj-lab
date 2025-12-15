@@ -7,13 +7,14 @@ export default function ProfileCard({ profile, onShare, }) {
     <div className=" 
         w-[550px] max-w-full 
         p-4
-        flex flex-col ui-element">
+        flex flex-col ui-element "
+        >
       
       {/* TITLE */}
       <h1 className="profile-title">{profile.title}</h1>
 
 
-        <div className="relative pb-4 ss">
+        <div className="relative pb-4 ss ">
         {/* SHORT TEXT */}
         {!expanded && (
           <p
@@ -60,6 +61,7 @@ export default function ProfileCard({ profile, onShare, }) {
             bg-white
             border
             px-4 py-2
+            cursor-pointer
             rounded-md
             text-sm
             hover:bg-[#39516A]

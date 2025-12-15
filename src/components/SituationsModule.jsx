@@ -6,13 +6,13 @@ export default function SituationModule({ situationsSelected }) {
   );
 
   return (
-    <div className=" p-4 rounded-xl ui-element w-[450px]">
+    <div className=" p-4 rounded-xl ui-element w-[500px]">
 
       <div className="grid grid-cols-2 gap-4">
         {selected.map((situation) => (
           <div
             key={situation.id}
-            className="relative h-32 rounded-xl overflow-hidden group shadow"
+            className="relative h-60 rounded-xl overflow-hidden group shadow"
           >
             {/* Billede */}
             <div
@@ -26,7 +26,7 @@ export default function SituationModule({ situationsSelected }) {
               flex items-center justify-center transition-opacity
             ">
               <p className="text-white font-medium text-center px-2">
-                {situation.label}
+                {situation.title}
               </p>
             </div>
           </div>

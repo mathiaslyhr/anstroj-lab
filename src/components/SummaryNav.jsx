@@ -28,7 +28,7 @@ export default function SummaryNav({ onReset, answers }) {
                 console.log("Saved with ID:", data.id);
                  alert(`Din duftprofil er gemt! Link:\n${shareLink}`);
                 }} 
-                className=" bg-[#39516A] text-white px-5 py-2 rounded-full text-sm
+                className="cursor-pointer bg-[#39516A] text-white px-5 py-2 rounded-full text-sm
                 hover:bg-[#2f4355] transition shadow-sm">
                 Gem din duftprofil
             </button>

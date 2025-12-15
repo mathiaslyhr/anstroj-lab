@@ -57,7 +57,7 @@ export default function IntensityStep({ onNext, onBack }) {
       {/* TEXT SECTION */}
       <div className="flex flex-col h-full">
        <div>
-            <h1 className="text-3xl font-medium mb-4">
+            <h1 className=" mb-4">
             Hvordan foretrækker du, at din duft opfører sig?
             </h1>
 
@@ -96,7 +96,10 @@ export default function IntensityStep({ onNext, onBack }) {
       </div>
 
       {/* NAVIGATION */}
-      <div className="flex justify-between mt-16 mb-10 w-[80%] self-center">
+      <div className="fixed bottom-0 left-0 right-0 
+      flex justify-between items-center 
+      px-6 py-4
+      z-50">
         <button
           onClick={onBack}
           className="text-sm text-stone-500 hover:text-stone-800"
@@ -106,7 +109,7 @@ export default function IntensityStep({ onNext, onBack }) {
 
         <button
           onClick={() => onNext(current.id)}
-          className="px-6 py-2 bg-[#39516A] text-white hover:bg-[#2f4355] transition-all"
+          className="px-6 py-2 bg-[#39516A] cursor-pointer text-white hover:bg-[#2f4355] transition-all"
         >
           Næste
         </button>

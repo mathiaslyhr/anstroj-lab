@@ -26,39 +26,32 @@ export default function ExpressionModule({ expression }) {
       "Din duft holdes harmonisk og afbalanceret. Vi kombinerer florale og træagtige retninger med finesse og ro."
   };
 
-  // EMOJI STYLE ICONS
-  const icons = {
-    natural: "🌿",
-    warm: "☀️",
-    confident: "🔥",
-    elegant: "✨"
-  };
+
 
   return (
     <div className="rounded-xl ui-element w-[450px] overflow-hidden  relative">
 
       {/* TOP IMAGE */}
       <div
-        className="h-40 bg-cover bg-center"
+        className="h-60 bg-cover bg-center"
         style={{ backgroundImage: `url(${exp.largeImage})` }}
       />
 
       {/* CONTENT */}
-      <div className="p-6 space-y-3">
+      <div className="p-4 space-y-3">
 
         {/* Expression label + icon */}
         <div className="flex items-center gap-3">
           <h2 className="text-xl font-semibold">{exp.label}</h2>
-           <span className="text-2xl">{icons[exp.id]}</span>
         </div>
 
         {/* Tagline */}
-        <p className="text-sm font-medium text-stone-600 italic">
+        <p className="text-sm font-medium italic">
           {taglines[exp.id]}
         </p>
 
         {/* Long explanation */}
-        <p className="text-sm text-stone-700 leading-relaxed">
+        <p className="text-sm  leading-relaxed">
           {explainers[exp.id]}
         </p>
       </div>

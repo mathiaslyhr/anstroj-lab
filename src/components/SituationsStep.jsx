@@ -17,7 +17,7 @@ export default function SituationsStep({  onNext, onBack }) {
 
       {/* heading */}
       <div>
-        <h1 className="text-3xl px-6 font-medium mb-4">
+        <h1 className="px-6 mb-4">
           Dufte passer ind i vores rytmer og rutiner.
         </h1>
 
@@ -92,7 +92,10 @@ export default function SituationsStep({  onNext, onBack }) {
       </div>
 
       {/* --- NAVIGATION BUTTONS --- */}
-      <div className="flex justify-between mt-16 px-6 mb-10 w-[90%] self-center">
+      <div className="fixed bottom-0 left-0 right-0 
+      flex justify-between items-center 
+      px-6 py-4
+      z-50">
         <button
           onClick={onBack}
           className="cursor-pointer text-sm text-stone-500 hover:text-stone-800"

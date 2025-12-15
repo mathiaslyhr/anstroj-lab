@@ -2,31 +2,31 @@
   { 
     "id": "soft_clean", 
     "label": "Soft Clean",
-    "image": "/images/moods/soft_clean.jpg"
+    "image": "/img/lab/soft-clean.jpg"
   },
   { 
     "id": "warm_cozy", 
     "label": "Warm & Cozy",
-    "image": "/images/moods/warm_cozy.jpg"
+    "image": "/img/lab/warm-cozy.jpg"
   },
   { 
     "id": "bright_uplifting", 
     "label": "Bright & Uplifting",
-    "image": "/images/moods/bright_uplifting.jpg"
+    "image": "/img/lab/bright-uplifting.jpg"
   },
   { 
     "id": "deep_alluring", 
     "label": "Deep & Alluring",
-    "image": "/images/moods/deep_alluring.jpg"
+    "image": "/img/lab/deep-alluring.jpg"
   },
   { 
     "id": "fresh_minimal", 
     "label": "Fresh Minimal",
-    "image": "/images/moods/fresh_minimal.jpg"
+    "image": "/img/lab/fresh-minimal.jpg"
   },
   { 
     "id": "bold_expressive", 
     "label": "Bold & Expressive",
-    "image": "/images/moods/bold_expressive.jpg"
+    "image": "/img/lab/bold-expressive.jpg"
   }
 ]

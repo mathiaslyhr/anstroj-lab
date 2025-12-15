@@ -5,13 +5,14 @@ export default function ExpressionStep({ onNext, onBack }) {
   const [selected, setSelected] = useState(null);
 
   const active = expressions.find(e => e.id === selected);
+  const defaultImage = "/img/Anstrog0681.jpg";
 
   return (
     <div className="h-full px-6 flex flex-col justify-between">
 
       {/* TOP TEXT */}
       <div>
-        <h1 className="text-3xl font-medium mb-4">
+        <h1 className=" mb-4">
           Dufte kan farve, hvordan andre oplever os.
         </h1>
 
@@ -63,22 +64,25 @@ export default function ExpressionStep({ onNext, onBack }) {
 
           {/* RIGHT SIDE LARGE IMAGE */}
           <div
-            className="w-[380px] h-[380px] bg-[#DCDCDC]"
-            style={{
-              backgroundImage: active ? `url(${active.largeImage})` : "none",
-              backgroundSize: "cover",
-              backgroundPosition: "center"
-            }}
-          ></div>
+          className="w-[380px] h-[380px] bg-[#DCDCDC]"
+          style={{
+            backgroundImage: `url(${active ? active.largeImage : defaultImage})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center"
+          }}
+        ></div>
 
         </div>
       </div>
 
       {/* NAVIGATION */}
-      <div className="flex justify-between mt-16 mb-10 w-[85%] self-center">
+      <div className="fixed bottom-0 left-0 right-0 
+      flex justify-between items-center 
+      px-6 py-4
+      z-50">
         <button
           onClick={onBack}
-          className="text-sm text-stone-500 hover:text-stone-800"
+          className="text-sm text-stone-500 hover:text-stone-800 cursor-pointer"
         >
           Tilbage
         </button>
@@ -87,7 +91,7 @@ export default function ExpressionStep({ onNext, onBack }) {
           onClick={() => onNext(selected)}
           disabled={!selected}
           className={`
-            px-6 py-2 transition-all
+            px-6 py-2 transition-all cursor-pointer
             ${
               selected
                 ? "bg-[#39516A] text-white hover:bg-[#2f4355]"
