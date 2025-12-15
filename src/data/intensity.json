@@ -1,7 +1,32 @@
 [
-  { "id": "subtle", "label": "Diskret" },
-  { "id": "soft", "label": "Let til stede" },
-  { "id": "balanced", "label": "Balanceret" },
-  { "id": "clear", "label": "Tydelig" },
-  { "id": "strong", "label": "Markant" }
+  {
+    "id": "subtle",
+    "label": "Diskret",
+    "short": "En helt subtil, næsten hudnær duft.",
+    "deep": "Du er til den mest underspillede form for duft — noget, der kun anes, når man kommer helt tæt på. Vi vælger derfor noter med lav diffusion og en meget blød udvikling, så din duft føles intim og naturlig."
+  },
+  {
+    "id": "soft",
+    "label": "Let til stede",
+    "short": "En rolig duft, der er til stede uden at dominere.",
+    "deep": "Du kan lide, at din duft mærkes — men uden at den fylder rummet. Vi arbejder med bløde hjerteakkorder og afrundede nuancer, der giver et mildt, harmonisk udtryk, som udvikler sig stille gennem dagen."
+  },
+  {
+    "id": "balanced",
+    "label": "Balanceret",
+    "short": "En afstemt duft, der både har nærvær og ro.",
+    "deep": "Du foretrækker en duft, der gør indtryk, men stadig føles naturlig. Med balancerede top-, hjerte- og basenoter får du et udtryk, der både har karakter og stabilitet — uden at blive tungt eller skarpt."
+  },
+  {
+    "id": "clear",
+    "label": "Tydelig",
+    "short": "En duft, der fylder mere og har markante noter.",
+    "deep": "Du er ikke bange for, at din duft får opmærksomhed. Vi udvælger tydelige akkorder med mere retning, så din profil har tilstedeværelse og personlighed — uden at blive overvældende."
+  },
+  {
+    "id": "strong",
+    "label": "Markant",
+    "short": "En kraftig og langvarig duftoplevelse.",
+    "deep": "Du bærer duft som et statement. Derfor bruger vi dybere basenoter, intens diffusion og stærkere aromatiske retninger, der sikrer, at din duft holder længe og efterlader et klart indtryk."
+  }
 ]

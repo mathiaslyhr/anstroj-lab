@@ -75,7 +75,7 @@ export default function Navbar() {
           transition-colors duration-300
           ${
             isSolid || isOpen
-              ? "bg-white border-b border-black/10"
+              ? "bg-[#fafafa] border-b border-black/10"
               : "bg-transparent border-b border-transparent"
           }
         `}

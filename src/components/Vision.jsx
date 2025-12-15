@@ -2,7 +2,7 @@ export default function Vision() {
   return (
     <section
       id="vision"
-      className="relative z-10 flex h-screen flex-col md:flex-row bg-white"
+      className="relative z-10 flex h-screen flex-col md:flex-row bg-[#fafafa]"
     >
       {/* Venstre: billede */}
       <div className="w-full md:w-1/2 h-1/2 md:h-full">

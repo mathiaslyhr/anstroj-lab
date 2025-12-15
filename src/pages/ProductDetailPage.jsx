@@ -101,7 +101,7 @@ export default function ProductDetailPage() {
             style={{backgroundImage: `url(${product.coverImage})`,}}>
 
                  <div className="duft-info p-4 flex flex-col gap-14 text-white bg-[#fdfbf7]/50 backdrop-blur-lg w-[90%]">
-                    <h3 className="font-normal">NOTES</h3>
+                    <h3 className="font-normal">NOTER</h3>
                     <div className="flex gap-10">
                         <div className="flex flex-col uppercase">
                             <p className="">Top</p>

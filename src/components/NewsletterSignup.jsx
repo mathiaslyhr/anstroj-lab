@@ -10,7 +10,7 @@ export default function NewsletterSignup() {
   };
 
   return (
-    <section className="h-screen flex items-center justify-center bg-white">
+    <section className="h-screen flex items-center justify-center bg-[#fafafa]">
       <div className="w-full max-w-3xl px-6 text-center">
         {!submitted ? (
           <div className="px-4 py-10">

@@ -18,7 +18,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="bg-neutral-50 text-neutral-900">
+    <div className="bg-[#fafafa] text-neutral-900">
       <Navbar />
 
       <main className="relative">

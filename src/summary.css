@@ -20,7 +20,7 @@
 .summary-canvas {
   position: relative;
   width: 200vw;
-  height: 290vh;
+  height: 320vh;
   background: #f9f7f5;
   transition: transform 0.8s ease; 
   transform-origin: center center;
