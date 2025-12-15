@@ -135,7 +135,7 @@ export default function Navbar() {
                 className={`cursor-pointer text-3xl font-bold uppercase tracking-[0.1em] transition-colors duration-200 ${textColor}`}
                 onClick={goHome}
               >
-                ANSTRØJ
+                ANSTRØG
               </span>
             </div>
 
