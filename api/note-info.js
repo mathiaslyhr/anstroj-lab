@@ -1,51 +1,57 @@
+// api/note-info.js
 import OpenAI from "openai";
+export const config = {
+  runtime: "nodejs"
+};
+
 
 const client = new OpenAI({
-   apiKey: process.env.OPENAI_API_KEY,
+  apiKey: process.env.OPENAI_API_KEY, // Ligger KUN på serveren
 });
 
+// Klassisk HTTP handler (Vercel / Node / Express-lignende)
 export default async function handler(req, res) {
-  const note = req.query.note;
-
-  if (!note) {
-    return res.status(400).json({ error: "Missing note parameter" });
-  }
-
   try {
-    // Prompt til OpenAI — genererer professionel duftnote-beskrivelse
+    const note = req.query.note; // fx "musk" eller "amber"
+
+    if (!note) {
+      return res.status(400).json({ error: "Missing note parameter" });
+    }
+
     const prompt = `
-      Du er parfumør. 
-      Forklar duftnoten "${note}" i korte, præcise afsnit:
+      Du er parfumør.
+      Forklar duftnoten "${note}" med fokus på parfume:
 
-      1) En udvidet, poetisk og sensorisk beskrivelse (maks 4–5 linjer)
-      2) Oprindelse: Hvor noten typisk udvindes fra
-      3) Duftfamilier: Hvilke olfaktoriske familier den bruges i
-      4) Stemning/energi noten giver i parfumer
-
-      Svar i JSON med følgende format:
+      Returnér KUN ren JSON i dette format:
       {
-        "description": "...",
-        "origin": "...",
-        "families": ["...", "..."],
-        "mood": "..."
+        "description": "4-5 linjers poetisk og sanselig beskrivelse",
+        "origin": "kort om hvor noten typisk stammer fra",
+        "families": ["en eller flere duftfamilier"],
+        "mood": "hvordan noten føles i en parfume"
       }
     `;
 
-    const completion = await client.responses.create({
+    const completion = await client.chat.completions.create({
       model: "gpt-4.1-mini",
-      input: prompt
+      messages: [{ role: "user", content: prompt }],
     });
 
-    const message = completion.output[0].content[0].text;
-    const parsed = JSON.parse(message);
+    let raw = completion.choices[0].message.content || "";
 
-    res.status(200).json({
+    // Fjern evt. ```json ``` omkring svaret
+    raw = raw.replace(/```json|```/g, "").trim();
+
+    const parsed = JSON.parse(raw);
+
+    return res.status(200).json({
       note,
-      ...parsed
+      ...parsed,
     });
-
   } catch (err) {
     console.error("OpenAI error:", err);
-    res.status(500).json({ error: "Failed generating note info" });
+    return res.status(500).json({
+      error: true,
+      message: "Kunne ikke generere note-info",
+    });
   }
 }
