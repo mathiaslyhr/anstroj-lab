@@ -1,13 +1,17 @@
-import { Route, Routes, Navigate } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import AboutPage from "./pages/AboutPage";
 import ProductsPage from "./pages/ProductsPage";
 import ProductDetailPage from "./pages/ProductDetailPage";
+import ScentLabFlow from "./components/ScentLabFlow";
+import SavedProfilePage from "./pages/SavedProfilePage";
+
+import ContactPage from "./components/ContactPage";
+import FAQPage from "./components/FAQPage";
+
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import ScentLabFlow from "./components/ScentLabFlow";
-import SavedProfilePage from "./pages/SavedProfilePage";
 
 export default function App() {
   return (
@@ -19,7 +23,8 @@ export default function App() {
       <Route path="/lab" element={<ScentLabFlow />} />
       <Route path="/profil/:id" element={<SavedProfilePage />} />
 
-
+      <Route path="/kontakt" element={<ContactPage />} />
+      <Route path="/faq" element={<FAQPage />} />
     </Routes>
-  )
+  );
 }
