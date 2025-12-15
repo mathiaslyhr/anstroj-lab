@@ -1,6 +1,7 @@
 import { useState,useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Search, ShoppingBag, Heart } from "lucide-react";
+import ChatHelper from "./ChatHelper";
 
 const linkClasses =
   "cursor-pointer text-[12px] font-normal uppercase tracking-[0.16em] hover:opacity-70 transition-opacity";
@@ -160,7 +161,11 @@ export default function Navbar() {
               <button className="cursor-pointer hover:opacity-70 transition-opacity">
                 <ShoppingBag size={18} strokeWidth={2} stroke={iconColor} />
               </button>
+
+               <ChatHelper iconColor={iconColor}/>
             </div>
+            
+           
 
           </div>
         </nav>
