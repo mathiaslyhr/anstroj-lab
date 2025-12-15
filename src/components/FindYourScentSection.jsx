@@ -2,7 +2,7 @@ import { ArrowRight } from "lucide-react";
 
 export default function FindYourScentSection() {
   const goToFinder = () => {
-    window.location.href = "/find-din-duft";
+    window.location.href = "/lab";
   };
 
   return (

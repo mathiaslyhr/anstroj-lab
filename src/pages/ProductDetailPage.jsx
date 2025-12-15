@@ -100,7 +100,7 @@ export default function ProductDetailPage() {
             <section className="px-6 mt-20 h-[90vh] grid grid-cols-2 items-end pb-12 bg-cover bg-center bg-no-repeat" 
             style={{backgroundImage: `url(${product.coverImage})`,}}>
 
-                 <div className="duft-info p-4 flex flex-col gap-14 text-white bg-[#fdfbf7]/50 backdrop-blur-lg w-[90%]">
+                 <div className="duft-info p-4 flex flex-col gap-14 text-white bg-[#0F1A24]/70 backdrop-blur-lg w-[90%]">
                     <h3 className="font-normal">NOTER</h3>
                     <div className="flex gap-10">
                         <div className="flex flex-col uppercase">
