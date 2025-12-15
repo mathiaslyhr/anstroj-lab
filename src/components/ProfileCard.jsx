@@ -14,7 +14,7 @@ export default function ProfileCard({ profile, onShare, }) {
       <h1 className="profile-title">{profile.title}</h1>
 
 
-        <div className="relative pb-4 ss">
+        <div className="relative pb-4 ss ">
         {/* SHORT TEXT */}
         {!expanded && (
           <p

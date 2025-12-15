@@ -17,7 +17,7 @@ export default function ImageSlider({ images, name }) {
             speed={600}
             className="h-full w-full"
             >
-                {images?.map((img, index) => (
+                {images?.slice().reverse().map((img, index) => (
                     <SwiperSlide key={index} className="h-full">
                         <img src={img} alt={`${name} ${index}`} className="w-full h-full object-cover"/>
                     </SwiperSlide>

@@ -107,9 +107,9 @@ export default function ScentLabSummary({ answers, onReset, }) {
        {/* modules */}
         
         {/* Selve duftprofil kortet */}
-        <div className="profile-name absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 ui-element">
+        <div className="profile-name absolute top-1/2 left-[calc(45%)] -translate-x-1/2 -translate-y-1/2 ui-element">
             <h1 className="pb-6">Din Duftprofil</h1>
-             <div className="p-5 rounded-lg shadow-[0_2px_10px_rgba(0,0,0,0.05)] bg-white  ui-element">
+             <div className="absolute p-5 rounded-lg shadow-[0_2px_10px_rgba(0,0,0,0.05)] bg-white  ui-element">
             <ProfileCard profile={profile} onSave={() => console.log("Gem profil")}/>
         </div>
         </div>
@@ -123,7 +123,7 @@ export default function ScentLabSummary({ answers, onReset, }) {
         </div>
 
         {/* foretrukne noter modul */}
-        <div className="absolute top-[calc(18%)]  left-[calc(40%)] -translate-y-1/2">
+        <div className="absolute top-[calc(25%)]  left-[calc(40%)] -translate-y-1/2">
             <h2 className="pb-6">Dine foretrukne duftnoter</h2>
             <div className="module">
            <NotesModule notesSelected={answers.notes}/>

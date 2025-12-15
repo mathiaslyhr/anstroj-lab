@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { db } from "../firebase";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { Heart } from "lucide-react";
+import { useFavorites } from "../context/FavoritesContext";
 import Navbar from "../components/Navbar";
 import ImageSlider from "../components/ImageSlider";
 
@@ -10,6 +11,7 @@ export default function ProductDetailPage() {
     const { slug } = useParams();
     const [product, setProduct] = useState(null);
     const [loading, setLoading] = useState(true);
+     const { isFavorite, toggleFavorite } = useFavorites();  
 
     useEffect(() => {
         async function loadProduct() {
@@ -48,14 +50,18 @@ export default function ProductDetailPage() {
 
         <div>
             <Navbar/>
-            <section className="pt-20 grid grid-cols-2 h-[90vh] overflow-hidden">
+            <section className="pt-[76px] grid grid-cols-2 h-[90vh] overflow-hidden">
                <ImageSlider images={product.detailImages} name={product.name}/>
 
                 <div className="flex flex-col justify-center items-center">
                     <div className="w-[70%]">
                         <div className="flex justify-between">
                             <h3>{product.name}</h3>
-                            <button className="favorite border p-2 cursor-pointer"><Heart strokeWidth={1}/></button>
+                            <button onClick={(e) => {
+                                e.preventDefault();     
+                                e.stopPropagation();    
+                                toggleFavorite(product.id);
+                            }} className="favorite border p-2 cursor-pointer"><Heart strokeWidth={1} fill={isFavorite(product.id) ? "black" : "none"}/></button>
                         </div>
                         <p className="pb-4">{product.description}</p>
                         <p>{product.moodDescription}</p>
