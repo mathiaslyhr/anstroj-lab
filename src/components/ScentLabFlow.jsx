@@ -45,7 +45,7 @@ export default function ScentLabFlow(){
     }
     
     return(
-        <div className={step === 8 ? "" : "pt-26"} >
+        <div className={step === 8 ? "" : "pt-26 pb-20"} >
              {step !== 8 && <Navbar />}
             <div className="">
                 <div 

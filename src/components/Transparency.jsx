@@ -4,7 +4,7 @@ export default function Transparency() {
   return (
     <section
       id="gennemsigtighed"
-      className="relative z-10 flex h-screen flex-col md:flex-row bg-white"
+      className="relative z-10 flex h-screen flex-col md:flex-row bg-[#fafafa]"
     >
       {/* Venstre: tekst */}
       <div className="flex flex-1 items-center justify-center px-6 md:px-16">

@@ -9,7 +9,7 @@ export default function ProductsPage() {
     const [products, setProducts] = useState([]);
     const [selectedFilter, setSelectedFilter] = useState("All")
 
-    const filters = ["All", "Amber", "Woody", "Floral", "Fresh", "Spicy"]
+    const filters = ["All", "Amber", "Woody", "Floral", "Frisk", "Krydret"]
 
     useEffect(() => {
         async function loadProducts() {

@@ -3,7 +3,7 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-neutral-200 bg-white text-neutral-700">
+    <footer className="border-t border-neutral-200 bg-[#fafafa] text-neutral-700">
       <div className="mx-auto max-w-6xl px-6 md:px-8 py-14 text-sm">
         {/* ØVERSTE SEKTION – 3 kolonner */}
         <div className="grid gap-10 md:grid-cols-3 items-start text-left md:pl-12">

@@ -2,21 +2,25 @@
   {
     "id": "high_sensitive",
     "title": "Jeg er meget sensitiv",
-    "text": "Jeg bliver hurtigt overvældet af stærke eller krydrede dufte."
+    "text": "Jeg bliver hurtigt overvældet af stærke eller krydrede dufte.",
+    "deep": "Din duftoplevelse er finjusteret. Kraftige noter kan hurtigt blive for meget, så vi arbejder med rene, luftige og milde kompositioner, der holder sig tæt på huden. Det giver dig en rolig og behagelig duftprofil uden overstimulation."
   },
   {
     "id": "specific_reactions",
     "title": "Jeg reagerer på bestemte noter",
-    "text": "Enkelte duftretninger kan give mig hovedpine eller ubehag."
+    "text": "Enkelte duftretninger kan give mig hovedpine eller ubehag.",
+    "deep": "Duft påvirker dig selektivt, og bestemte noter rammer hårdere end andre. Derfor vælger vi ingredienser med lavere intensitet og undgår retninger, der typisk trigger ubehag — som tung amber, skarpe citrusaromaer eller stærke krydderier. Din profil bliver derfor målrettet det, din krop trives bedst med."
   },
   {
     "id": "mild_preferences",
     "title": "Jeg foretrækker milde dufte",
-    "text": "Jeg kan godt lide duft, men helst noget let, rent og ikke for tungt."
+    "text": "Jeg kan godt lide duft, men helst noget let, rent og ikke for tungt.",
+    "deep": "For dig handler duft om subtil stemning — ikke dominans. Vi prioriterer lyse florale retninger, rene musk-akkorder og bløde trænoter, der giver en let oplevelse med en naturlig elegance. Mild, men stadig nærværende."
   },
   {
     "id": "not_sensitive",
     "title": "Jeg er ikke særlig sensitiv",
-    "text": "De fleste dufte fungerer for mig, også dem med lidt mere karakter."
+    "text": "De fleste dufte fungerer for mig, også dem med lidt mere karakter.",
+    "deep": "Du er duftrobust og kan bære både friske, varme og dybere akkorder uden problemer. Det giver mulighed for større kompleksitet, mere karakter og længere varighed i din duftprofil — uden at det bliver overvældende."
   }
 ]

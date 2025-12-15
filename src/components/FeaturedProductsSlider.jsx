@@ -68,7 +68,7 @@ export default function FeaturedProductsSlider() {
   };
 
   return (
-    <section className="relative z-10 h-screen bg-[#fff] flex items-center justify-center">
+    <section className="relative z-10 h-screen bg-[#fafafa] flex items-center justify-center">
       <div className="w-full">
         {/* SLIDER */}
         <div

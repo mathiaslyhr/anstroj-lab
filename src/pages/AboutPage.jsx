@@ -38,7 +38,7 @@ export default function AboutPage() {
   }, []);
 
   return (
-    <div className="bg-[#F6F1EB]">
+    <div className="bg-[#fafafa]">
       <Navbar />
 
       <div className="h-[calc(100vh-76px)] bg-[#D9D9D9] flex items-center justify-center leading-tight px-4 mt-[76px] bg-no-repeat bg-cover bg-center bg-[url('/img/Anstrog0612.jpg')]">
@@ -67,7 +67,7 @@ export default function AboutPage() {
         {/* RIGHT - brødtekst */}
         <div className="flex items-start flex-col gap-4 px-8 py-10 max-w-2xl ">
           <div className="flex flex-col gap-4">
-             <h2 className="pb-6">Vores Historie</h2>
+             <h2 className="pb-4">Vores Historie</h2>
               <p>
                 Anstrøg udspringer ikke af en forretningsplan, men af en følelse.
                 En undren. En lille frustration. Og et ønske om at skabe noget mere ærligt.

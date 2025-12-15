@@ -15,7 +15,7 @@ export default function ValuesAbout() {
             </p>
           </div>
         
-          <h4 className="uppercase text-[2em] leading-[1.2] ">Gennemsigtighed & Ærlighed</h4>
+          <h4 className="uppercase text-[2em] leading-[1.2] ">Gennemsigtighed og Ærlighed</h4>
           <p className="uppercase">Ærlige dufte. Ærlige priser.</p>
         </div>
 

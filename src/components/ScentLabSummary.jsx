@@ -102,7 +102,7 @@ export default function ScentLabSummary({ answers, onReset, }) {
             Tilbage
         </div>
       {/* BIG CANVAS */}
-      <div ref={canvasRef} className="summary-canvas relative overflow-hidden bg-[#fdfbf7] ">
+      <div ref={canvasRef} className="summary-canvas relative overflow-hidden bg-[#fafafa] ">
 
        {/* modules */}
         
