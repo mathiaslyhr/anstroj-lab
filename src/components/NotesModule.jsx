@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import notesData from "../data/notes.json";
 
 export default function NotesModule({ notesSelected = [] }) {
@@ -6,19 +6,46 @@ export default function NotesModule({ notesSelected = [] }) {
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
 
+  // Typing animation
+  const [typedText, setTypedText] = useState("");
+  const [typing, setTyping] = useState(false);
+
   const notes = notesData.filter((n) => notesSelected.includes(n.id));
+
+  // CACHING FUNKTION
+  function getCachedNote(id) {
+    const cached = localStorage.getItem(`note-cache-${id}`);
+    return cached ? JSON.parse(cached) : null;
+  }
+
+  function saveCachedNote(id, data) {
+    localStorage.setItem(`note-cache-${id}`, JSON.stringify(data));
+  }
 
   async function fetchNoteDetails(id) {
     setErrorMsg("");
     setLoading(true);
+    setTypedText("");
+    setTyping(false);
+
+    // Check cache før API-kald
+    const cached = getCachedNote(id);
+    if (cached) {
+      setLoading(false);
+      return cached; // returner straks
+    }
+
+    // Ellers hent fra API
     try {
       const res = await fetch(`/api/note-info?note=${id}`);
-      if (!res.ok) throw new Error("Kunne ikke hente note");
       const data = await res.json();
 
       if (!res.ok || data.error) {
         throw new Error(data.message || "Fejl ved hentning af note-info");
       }
+
+      // Gem i cache til fremtiden
+      saveCachedNote(id, data);
 
       return data;
     } catch (err) {
@@ -30,13 +57,35 @@ export default function NotesModule({ notesSelected = [] }) {
     }
   }
 
+  // Typing animation når AI-tekst er klar
+  useEffect(() => {
+    if (!activeNote?.extra?.description) return;
+
+    const text = activeNote.extra.description;
+    let index = 0;
+
+    setTyping(true);
+    setTypedText("");
+
+    const interval = setInterval(() => {
+      setTypedText((prev) => prev + text[index]);
+      index++;
+
+      if (index >= text.length) {
+        clearInterval(interval);
+        setTyping(false);
+      }
+    }, 15);
+
+    return () => clearInterval(interval);
+  }, [activeNote]);
+
+
+
   return (
     <div className="p-4 rounded-xl w-[380px] ui-element">
       <h2 className="mb-4">De noter, du naturligt læner dig mod.</h2>
-      <p>
-        Klik på en note for at få en mere detaljeret forklaring på, hvad den
-        betyder i en parfume.
-      </p>
+      <p>Klik på en note for at få en mere detaljeret forklaring på, hvad den betyder i en parfume.</p>
 
       <div className="flex flex-wrap pt-4 gap-4">
         {notes.map((note) => (
@@ -82,19 +131,27 @@ export default function NotesModule({ notesSelected = [] }) {
             {/* Lokal beskrivelse */}
             <p className="text-sm mb-4">{activeNote.description}</p>
 
-            {/* API EXTRA INFO */}
+            {/* API LOADING / TYPING */}
             {loading && (
-              <p className="text-sm text-stone-500">Henter detaljer…</p>
+              <div className="animate-pulse space-y-3 my-4">
+                <div className="h-3 w-3/4 bg-stone-200 rounded"></div>
+                <div className="h-3 w-2/3 bg-stone-200 rounded"></div>
+                <div className="h-3 w-1/2 bg-stone-200 rounded"></div>
+                <p className="text-xs text-stone-500 italic">AI skriver...</p>
+              </div>
             )}
 
-            {errorMsg && (
-              <p className="text-xs text-red-500 mb-2">{errorMsg}</p>
-            )}
+            {errorMsg && <p className="text-xs text-red-500 mb-2">{errorMsg}</p>}
 
             {!loading && activeNote.extra && (
               <div className="mb-4 text-sm space-y-2">
                 <p className="font-medium">Ekstra info fra parfumøren:</p>
-                <p>{activeNote.extra.description}</p>
+
+                {/* Typing Effect */}
+                <p className="whitespace-pre-line">
+                  {typedText}
+                  {typing && <span className="animate-pulse">|</span>}
+                </p>
 
                 <p className="text-xs text-stone-500">
                   Oprindelse: {activeNote.extra.origin}

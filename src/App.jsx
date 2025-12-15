@@ -8,6 +8,7 @@ import SavedProfilePage from "./pages/SavedProfilePage";
 
 import ContactPage from "./components/ContactPage";
 import FAQPage from "./components/FAQPage";
+import ChatHelper from "./components/ChatHelper";
 
 import "swiper/css";
 import "swiper/css/pagination";
