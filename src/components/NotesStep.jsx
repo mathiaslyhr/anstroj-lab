@@ -4,14 +4,13 @@ import notes from "../data/notes.json";
 export default function NotesStep({ onNext, onBack }) {
   const [selectedNotes, setSelectedNotes] = useState([]);
 
-
   const [activeNote, setActiveNote] = useState(null);
   const [loading, setLoading] = useState(false);
   const [typedText, setTypedText] = useState("");
   const [typing, setTyping] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
 
-  // CACHING
+  // Caching
 
   function getCachedNote(id) {
     const cached = localStorage.getItem(`note-cache-${id}`);
@@ -22,22 +21,20 @@ export default function NotesStep({ onNext, onBack }) {
     localStorage.setItem(`note-cache-${id}`, JSON.stringify(data));
   }
 
-  
-  // FETCH AI NOTE DETAILS
+//  fetch ai note detaljer
+
   async function fetchAIDetails(id) {
     setErrorMsg("");
     setLoading(true);
     setTypedText("");
     setTyping(false);
 
-    // Check cache
     const cached = getCachedNote(id);
     if (cached) {
       setLoading(false);
       return cached;
     }
 
-    // Fetch from API
     try {
       const res = await fetch(`/api/note-info?note=${id}`);
       const data = await res.json();
@@ -46,23 +43,24 @@ export default function NotesStep({ onNext, onBack }) {
 
       saveCachedNote(id, data);
       return data;
+
     } catch (err) {
       console.error(err);
       setErrorMsg("Kunne ikke hente AI-beskrivelse.");
       return null;
+
     } finally {
       setLoading(false);
     }
   }
 
+  // note handle sektion
 
-  // When user clicks a note tile
-  
   async function toggleNote(id) {
     let newSelection = [...selectedNotes];
 
-    if (selectedNotes.includes(id)) {
-      newSelection = selectedNotes.filter(n => n !== id);
+    if (newSelection.includes(id)) {
+      newSelection = newSelection.filter(n => n !== id);
     } else {
       if (newSelection.length >= 2) return;
       newSelection.push(id);
@@ -70,56 +68,62 @@ export default function NotesStep({ onNext, onBack }) {
 
     setSelectedNotes(newSelection);
 
-    // Update active note
-    const note = notes.find(n => n.id === newSelection[newSelection.length - 1]);
+    // hvis intet valgt clear aktive note
+    if (newSelection.length === 0) {
+      setActiveNote(null);
+      return;
+    }
+
+    const noteId = newSelection[newSelection.length - 1];
+    const note = notes.find(n => n.id === noteId);
+
     if (!note) return;
 
-    // Fetch AI details
     const extra = await fetchAIDetails(note.id);
 
     setActiveNote({
       ...note,
-      ai: extra
+      ai: extra || null
     });
   }
 
   
-  // Typing animation
+  // type effect
   
+
   useEffect(() => {
-    if (!activeNote?.ai?.description) return;
+    const text = activeNote?.ai?.description;
 
-    const text = activeNote.ai.description;
-    let i = 0;
+    if (!text || typeof text !== "string") return;
 
-    setTyping(true);
+    let index = 0;
     setTypedText("");
+    setTyping(true);
 
     const interval = setInterval(() => {
-      setTypedText(prev => prev + text[i]);
-      i++;
-
-      if (i >= text.length) {
+      if (index >= text.length) {
         clearInterval(interval);
         setTyping(false);
+        return;
       }
-    }, 15);
+
+      setTypedText(prev => prev + text[index]);
+      index++;
+    }, 18);
 
     return () => clearInterval(interval);
   }, [activeNote]);
 
-  
-  // Render
-  
-  const currentNote = activeNote || null;
+
+
+  const currentNote = activeNote ?? null;
 
   return (
     <div className="px-6 pt-10 h-[90vh] flex flex-col justify-between">
 
-      {/* TOP SECTION */}
       <div className="flex gap-12 w-full">
 
-        {/* LEFT NOTE PREVIEW */}
+        {/* LEFT PREVIEW */}
         <div
           className="w-[50%] h-full rounded-xl flex items-center justify-center px-10 
                      text-center relative overflow-hidden"
@@ -132,13 +136,9 @@ export default function NotesStep({ onNext, onBack }) {
           <div className="absolute inset-0 bg-white/10 backdrop-blur-xs"></div>
 
           <div className="relative text-white z-10 leading-relaxed text-lg">
-            
-            {/* If no note selected */}
-            {!currentNote && (
-              <p>Klik på en note for at se mere om den.</p>
-            )}
 
-            {/* If loading */}
+            {!currentNote && <p>Klik på en note for at se mere om den.</p>}
+
             {loading && (
               <div className="animate-pulse space-y-4">
                 <div className="h-3 bg-white/30 rounded w-3/4"></div>
@@ -147,12 +147,10 @@ export default function NotesStep({ onNext, onBack }) {
               </div>
             )}
 
-            {/* fallback JSON */}
-            {!loading && errorMsg && (
-              <p className="text-sm">{currentNote.description}</p>
+            {errorMsg && !loading && (
+              <p className="text-sm">{currentNote?.description}</p>
             )}
 
-            {/* AI typing */}
             {!loading && currentNote?.ai && (
               <p className="whitespace-pre-line">
                 {typedText}
@@ -160,7 +158,6 @@ export default function NotesStep({ onNext, onBack }) {
               </p>
             )}
 
-            {/* Fallback hvis ingen AI tekst */}
             {!loading && !currentNote?.ai && currentNote?.description && (
               <p>{currentNote.description}</p>
             )}
@@ -219,7 +216,6 @@ export default function NotesStep({ onNext, onBack }) {
         </div>
       </div>
 
-      {/* NAVIGATION */}
       <div className="fixed bottom-0 left-0 right-0 
                       flex justify-between items-center 
                       px-6 py-4 z-50">

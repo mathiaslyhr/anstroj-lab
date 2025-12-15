@@ -12,7 +12,7 @@ export default function NotesModule({ notesSelected = [] }) {
 
   const notes = notesData.filter((n) => notesSelected.includes(n.id));
 
-  // CACHING FUNKTION
+  // CACHE
   function getCachedNote(id) {
     const cached = localStorage.getItem(`note-cache-${id}`);
     return cached ? JSON.parse(cached) : null;
@@ -28,14 +28,13 @@ export default function NotesModule({ notesSelected = [] }) {
     setTypedText("");
     setTyping(false);
 
-    // Check cache før API-kald
+    // Check cache
     const cached = getCachedNote(id);
     if (cached) {
       setLoading(false);
-      return cached; // returner straks
+      return cached;
     }
 
-    // Ellers hent fra API
     try {
       const res = await fetch(`/api/note-info?note=${id}`);
       const data = await res.json();
@@ -44,43 +43,44 @@ export default function NotesModule({ notesSelected = [] }) {
         throw new Error(data.message || "Fejl ved hentning af note-info");
       }
 
-      // Gem i cache til fremtiden
       saveCachedNote(id, data);
-
       return data;
+
     } catch (err) {
       console.error(err);
       setErrorMsg("Vi kunne ikke hente ekstra info om noten lige nu.");
       return null;
+
     } finally {
       setLoading(false);
     }
   }
 
-  // Typing animation når AI-tekst er klar
+  // type animation
   useEffect(() => {
-    if (!activeNote?.extra?.description) return;
+    const text = activeNote?.extra?.description;
 
-    const text = activeNote.extra.description;
+    if (!text || typeof text !== "string") return;
+
     let index = 0;
-
-    setTyping(true);
     setTypedText("");
+    setTyping(true);
 
     const interval = setInterval(() => {
-      setTypedText((prev) => prev + text[index]);
-      index++;
 
+      
       if (index >= text.length) {
         clearInterval(interval);
         setTyping(false);
+        return;
       }
+
+      setTypedText((prev) => prev + text[index]);
+      index++;
     }, 15);
 
     return () => clearInterval(interval);
   }, [activeNote]);
-
-
 
   return (
     <div className="p-4 rounded-xl w-[380px] ui-element">
@@ -94,6 +94,8 @@ export default function NotesModule({ notesSelected = [] }) {
             onClick={async () => {
               const extra = await fetchNoteDetails(note.id);
               if (!extra) return;
+
+              setTypedText(""); // reset typing
               setActiveNote({ ...note, extra });
             }}
             className="px-4 py-2 rounded-full bg-[#F3F3F3] border border-[#D4D4D4] hover:bg-[#39516A] hover:text-white transition cursor-pointer"
@@ -128,26 +130,28 @@ export default function NotesModule({ notesSelected = [] }) {
 
             <h3 className="text-xl font-semibold mb-2">{activeNote.label}</h3>
 
-            {/* Lokal beskrivelse */}
-            <p className="text-sm mb-4">{activeNote.description}</p>
+            {/* Lokal beskrivelse (vises kun hvis AI ikke findes) */}
+            {!activeNote.extra && (
+              <p className="text-sm mb-4">{activeNote.description}</p>
+            )}
 
-            {/* API LOADING / TYPING */}
+            {/* AI Loading */}
             {loading && (
               <div className="animate-pulse space-y-3 my-4">
                 <div className="h-3 w-3/4 bg-stone-200 rounded"></div>
                 <div className="h-3 w-2/3 bg-stone-200 rounded"></div>
-                <div className="h-3 w-1/2 bg-stone-200 rounded"></div>
                 <p className="text-xs text-stone-500 italic">AI skriver...</p>
               </div>
             )}
 
             {errorMsg && <p className="text-xs text-red-500 mb-2">{errorMsg}</p>}
 
+            {/* AI info */}
             {!loading && activeNote.extra && (
               <div className="mb-4 text-sm space-y-2">
                 <p className="font-medium">Ekstra info fra parfumøren:</p>
 
-                {/* Typing Effect */}
+                {/* Typing text */}
                 <p className="whitespace-pre-line">
                   {typedText}
                   {typing && <span className="animate-pulse">|</span>}
@@ -171,7 +175,7 @@ export default function NotesModule({ notesSelected = [] }) {
               </div>
             )}
 
-            {/* Found in */}
+            {/* Products containing note */}
             <h4 className="font-medium text-sm mb-1">Findes i:</h4>
             <ul className="list-disc list-inside text-sm">
               {activeNote.foundIn.map((p) => (
