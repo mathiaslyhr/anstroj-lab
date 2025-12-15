@@ -12,8 +12,6 @@ import FAQPage from "./components/FAQPage";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import ScentLabFlow from "./components/ScentLabFlow";
-import SavedProfilePage from "./pages/SavedProfilePage";
 import Favorites from "./pages/Favorites";
 import { FavoritesProvider } from "./context/FavoritesContext"
 
@@ -32,10 +30,6 @@ export default function App() {
       <Route path="/kontakt" element={<ContactPage />} />
       <Route path="/faq" element={<FAQPage />} />
     </Routes>
-  );
-
-
-      </Routes>
     </FavoritesProvider>
   )
 }
