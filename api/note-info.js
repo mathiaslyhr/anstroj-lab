@@ -10,17 +10,20 @@ export default async function handler(req, res) {
   try {
     const note = req.query.note;
 
-    const prompt = `
-      Returnér kun dette JSON objekt:
-      {
-        "description": "...",
-        "origin": "...",
-        "families": ["..."],
-        "mood": "..."
-      }
+   const prompt = `
+  Du er parfumør og skal skrive på DANSK.
 
-      Udfyld det baseret på duftnoten "${note}".
-    `;
+  Forklar duftnoten "${note}" med parfume-faglige termer.
+
+  Returnér KUN ren JSON i dette format — INGEN forklaringer:
+  {
+    "description": "4-5 linjers poetisk og sanselig beskrivelse på dansk",
+    "origin": "kort om hvor noten stammer fra",
+    "families": ["duftfamilier"],
+    "mood": "hvordan noten føles i en parfume"
+  }
+`;
+
 
     const response = await client.responses.create({
      model: "gpt-4o-mini",
