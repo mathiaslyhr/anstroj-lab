@@ -35,7 +35,7 @@ export default function FAQPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-white text-neutral-900">
+    <div className="min-h-screen flex flex-col bg-[#fafafa] text-neutral-900">
       <Navbar />
 
       <main className="flex-1">

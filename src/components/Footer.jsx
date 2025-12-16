@@ -1,6 +1,8 @@
 // src/components/Footer.jsx
+import { useNavigate } from "react-router-dom";
 export default function Footer() {
   const year = new Date().getFullYear();
+  const navigate = useNavigate();
 
   return (
     <footer className="border-t border-neutral-200 bg-[#fafafa] text-neutral-700">
@@ -8,57 +10,57 @@ export default function Footer() {
         {/* ØVERSTE SEKTION – 3 kolonner */}
         <div className="grid gap-10 md:grid-cols-3 items-start text-left md:pl-12">
           {/* Venstre kolonne: brand + citat */}
-          <div className="place-self-start">
-            <p className="text-sm font-semibold tracking-[0.25em] uppercase text-neutral-900">
-              Anstrøj Lab
-            </p>
-            <p className="mt-3 text-sm leading-relaxed text-neutral-600">
+          <div className="place-self-start font-bold">
+            <h3 className="font-medium tracking-[0.25em] uppercase text-neutral-900">
+              Anstrøg Lab
+            </h3>
+            <h4 className="mt-3 font-bold leading-relaxed text-neutral-900">
               Et moderne nordisk duftunivers, hvor råt håndværk
               <br />
               underspillet luksus og ærlig kvalitet mødes.
-            </p>
+            </h4>
           </div>
 
           {/* Midterste kolonne: politik-links */}
           <div className="place-self-start text-xs text-neutral-600">
             <ul className="space-y-2">
               <li>
-                <a href="/persondata" className="hover:text-neutral-900">
+                <button href="/persondata" className="hover:text-neutral-900 cursor-pointer">
                   Politik om beskyttelse af persondata
-                </a>
+                </button>
               </li>
               <li>
-                <a href="/refusion" className="hover:text-neutral-900">
+                <button href="/refusion" className="hover:text-neutral-900 cursor-pointer">
                   Refusionspolitik
-                </a>
+                </button>
               </li>
               <li>
-                <a href="/servicevilkar" className="hover:text-neutral-900">
+                <button href="/servicevilkar" className="hover:text-neutral-900 cursor-pointer">
                   Servicevilkår
-                </a>
+                </button>
               </li>
               <li>
-                <a href="/kontaktinformation" className="hover:text-neutral-900">
+                <button href="/kontaktinformation" className="hover:text-neutral-900 cursor-pointer">
                   Kontaktinformation
-                </a>
+                </button>
               </li>
               <li>
-                <a href="/cookies" className="hover:text-neutral-900">
+                <button href="/cookies" className="hover:text-neutral-900 cursor-pointer">
                   Præferencer for cookies
-                </a>
+                </button>
               </li>
             </ul>
           </div>
 
           {/* Højre kolonne: Kontakt + FAQ */}
           <div className="place-self-start text-xs text-neutral-600">
-            <nav className="flex flex-col space-y-2">
-              <a href="/kontakt" className="hover:text-neutral-900">
+            <nav className="flex flex-col items-start space-y-2">
+              <button onClick={() => navigate("/kontakt")} className="hover:text-neutral-900 cursor-pointer">
                 Kontakt
-              </a>
-              <a href="/faq" className="hover:text-neutral-900">
+              </button>
+              <button onClick={() => navigate("/faq")} className="hover:text-neutral-900 cursor-pointer">
                 Ofte stillede spørgsmål
-              </a>
+              </button>
             </nav>
           </div>
         </div>

@@ -1,6 +1,8 @@
 import { ArrowRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export default function Transparency() {
+  const navigate = useNavigate();
   return (
     <section
       id="gennemsigtighed"
@@ -35,7 +37,7 @@ export default function Transparency() {
             type="button"
             className="group cursor-pointer flex flex-col items-start mt-6"
           >
-            <div className="flex items-center gap-3 uppercase text-[12px] tracking-[0.25em] font-semibold">
+            <div onClick={() => navigate("/om-os")} className="flex items-center gap-3 uppercase text-[12px] tracking-[0.25em] font-semibold">
               <span>Lær mere</span>
               <ArrowRight
                 size={16}
