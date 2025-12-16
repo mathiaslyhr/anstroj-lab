@@ -105,7 +105,8 @@ export default function RecommendationModule({ answers }) {
 
   return scored.slice(0, 2).map(s => s.product);
 }, [products, answers]);
-  useEffect(() => {
+  
+useEffect(() => {
     async function load() {
       const snap = await getDocs(collection(db, "products"));
       const list = snap.docs.map(doc => ({ id: doc.id, ...doc.data() }));

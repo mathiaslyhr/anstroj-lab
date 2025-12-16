@@ -13,6 +13,7 @@ import ScentLabSummary from "./ScentLabSummary";
 
 export default function ScentLabFlow(){
     const [step, setStep] = useState(0);
+    
     const [answers, setAnswers] = useState({
     moods: [],
     situations: [],

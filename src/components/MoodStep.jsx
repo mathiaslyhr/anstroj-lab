@@ -29,7 +29,7 @@ export default function MoodStep({ onNext, onBack } ) {
           Forestil dig, at parfumen bliver en forlængelse af din energi. 
           Hvilken vibe vil du gerne tage med dig ind i din hverdag?
         </h3>
-        <h3 className="mb-8 w-[70%] font-normal">Vælg den vibe, du føler dig mest draget af – den hjælper os med at forstå, hvilken retning din duftprofil skal bevæge sig i.</h3>
+        <h3 className="mb-8 w-[70%] font-normal">Vælg de to vibes, du føler dig mest draget af – de hjælper os med at forstå, hvilken retning din duftprofil skal bevæge sig i.</h3>
 
         {/* Options */}
         <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mt-10 w-[80%] pt-4 justify-self-center">
