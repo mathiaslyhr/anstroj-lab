@@ -1,8 +1,10 @@
 import { ArrowRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export default function FindYourScentSection() {
+  const navigate = useNavigate();
   const goToFinder = () => {
-    window.location.href = "/lab";
+    navigate("/lab");
   };
 
   return (

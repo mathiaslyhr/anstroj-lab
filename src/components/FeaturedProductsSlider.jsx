@@ -1,9 +1,12 @@
 import { useState, useRef } from "react";
 import { ArrowRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export default function FeaturedProductsSlider() {
   const [activeIndex, setActiveIndex] = useState(0);
   const scrollRef = useRef(null);
+
+  const navigate = useNavigate();
 
   const products = [
     {
@@ -64,7 +67,7 @@ export default function FeaturedProductsSlider() {
 
   // bruger slug i stedet for id
   const goToProduct = (slug) => {
-    window.location.href = `/produkter/${slug}`;
+    navigate(`/produkter/${slug}`);
   };
 
   return (
