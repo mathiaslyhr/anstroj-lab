@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { ArrowRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const leftImages = [
   "/img/about-image2.jpg",
@@ -20,6 +21,7 @@ const DISPLAY_TIME = 3000;
 export default function Hero() {
   const [leftIndex, setLeftIndex] = useState(0);
   const [rightIndex, setRightIndex] = useState(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -45,7 +47,7 @@ export default function Hero() {
   }, []);
 
   const handleCtaClick = () => {
-    window.location.href = "/produkter";
+    navigate("/produkter");
   };
 
   return (

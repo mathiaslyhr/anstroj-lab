@@ -12,7 +12,7 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="bg-white min-h-screen flex flex-col">
+    <div className="bg-[#fafafa] min-h-screen flex flex-col">
       <Navbar />
 
       <main className="flex-1 px-6 md:px-10 pt-36 pb-20">
