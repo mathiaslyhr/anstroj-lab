@@ -41,7 +41,7 @@ export default function AboutPage() {
     <div className="bg-[#fafafa]">
       <Navbar />
 
-      <div className="h-[calc(100vh-76px)] bg-[#D9D9D9] flex items-center justify-center leading-tight px-4 mt-[76px] bg-no-repeat bg-contain bg-center bg-[url('/img/Anstrog0612.jpg')]">
+      <div className="h-[calc(100vh-76px)] bg-[#D9D9D9] flex items-center justify-center leading-tight px-4 mt-[76px] bg-[url('/img/Anstrog0612.jpg')]" style={{ backgroundSize: 'contain', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
         <h1 className="text-4xl text-white md:text-5xl leading-tight text-center">
           mere end bare en parfume.
         </h1>
@@ -49,7 +49,7 @@ export default function AboutPage() {
 
       <section className="min-h-screen grid grid-cols-1 md:grid-cols-2">
         {/* LEFT - Image background */}
-        <div className=" h-full bg-contain bg-center bg-no-repeat md:h-full bg-[url('/img/about-image2.jpg')]">
+        <div className="h-full md:h-full bg-[url('/img/about-image2.jpg')]" style={{ backgroundSize: 'contain', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
           <div className="px-8 py-8 h-full">
             <div ref={leftRef} className="relative min-h-screen">
               <div
@@ -125,7 +125,7 @@ export default function AboutPage() {
 
       <section className="grid grid-cols-[1fr_2fr]">
            <div>
-            <img src="/img/about-2.jpg" alt="Anstrøg parfume" className="w-full h-full object-contain" />
+            <img src="/img/about-2.jpg" alt="Anstrøg parfume" className="w-full" style={{ objectFit: 'contain' }} />
            </div>
 
            <div className="pt-12 px-8">
